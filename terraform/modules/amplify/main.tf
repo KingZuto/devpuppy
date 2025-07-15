@@ -37,9 +37,7 @@ resource "aws_amplify_app" "devpuppy" {
 
   # Environment variables
   environment_variables = {
-    AMPLIFY_MONOREPO_APP_ROOT = "."
-    AMPLIFY_DIFF_DEPLOY       = "false"
-    _LIVE_UPDATES             = jsonencode([{
+    _LIVE_UPDATES = jsonencode([{
       pkg     = "next"
       type    = "npm"
       version = "latest"
