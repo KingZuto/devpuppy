@@ -12,3 +12,13 @@ output "website_url" {
   description = "Website URL"
   value       = module.static_site.website_url
 }
+
+output "codebuild_project_name" {
+  description = "CodeBuild project name"
+  value       = module.cicd.codebuild_project_name
+}
+
+output "codepipeline_name" {
+  description = "CodePipeline name"
+  value       = module.cicd.codepipeline_name
+}
