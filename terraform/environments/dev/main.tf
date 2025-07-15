@@ -11,18 +11,10 @@ provider "aws" {
   region = var.aws_region
 }
 
-module "amplify" {
-  source = "../../modules/amplify"
+# Static site hosting with S3 + CloudFront
+module "static_site" {
+  source = "../../modules/static-site"
 
-  app_name             = "devpuppy-dev"
-  github_repository    = var.github_repository
-  github_access_token  = var.github_access_token
-  domain_name          = var.domain_name
-  environment          = "dev"
-  main_branch          = "dev"
-
-  branch_environment_variables = {
-    NODE_ENV = "development"
-    NEXT_TELEMETRY_DISABLED = "1"
-  }
+  app_name    = "devpuppy"
+  environment = "dev"
 }

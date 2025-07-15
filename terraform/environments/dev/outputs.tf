@@ -1,14 +1,14 @@
-output "app_id" {
-  description = "Amplify App ID"
-  value       = module.amplify.app_id
+output "s3_bucket_name" {
+  description = "S3 bucket name for website hosting"
+  value       = module.static_site.s3_bucket_name
 }
 
-output "app_url" {
-  description = "Application URL"
-  value       = module.amplify.branch_url
+output "cloudfront_distribution_id" {
+  description = "CloudFront Distribution ID"
+  value       = module.static_site.cloudfront_distribution_id
 }
 
-output "custom_domain_url" {
-  description = "Custom domain URL"
-  value       = module.amplify.custom_domain_url
+output "website_url" {
+  description = "Website URL"
+  value       = module.static_site.website_url
 }
