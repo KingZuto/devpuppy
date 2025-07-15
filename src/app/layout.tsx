@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Sidebar from "../components/Sidebar";
 import PageTransition from "../components/PageTransition";
+import ThemeToggle from "../components/ThemeToggle";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,13 +28,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white min-h-screen`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white dark:bg-black min-h-screen`}
         suppressHydrationWarning={true}
       >
         <div className="flex min-h-screen">
           <Sidebar />
           <PageTransition>{children}</PageTransition>
         </div>
+        <ThemeToggle />
       </body>
     </html>
   );
