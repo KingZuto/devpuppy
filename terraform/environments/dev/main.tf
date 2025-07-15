@@ -23,5 +23,6 @@ module "amplify" {
 
   branch_environment_variables = {
     NODE_ENV = "development"
+    NEXT_TELEMETRY_DISABLED = "1"
   }
 }
