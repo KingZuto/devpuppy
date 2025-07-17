@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Sidebar from "../components/Sidebar";
 import PageTransition from "../components/PageTransition";
+import ThemeToggle from "../components/ThemeToggle";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,6 +35,7 @@ export default function RootLayout({
           <Sidebar />
           <PageTransition>{children}</PageTransition>
         </div>
+        <ThemeToggle />
       </body>
     </html>
   );
