@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white dark:bg-black min-h-screen`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-gradient-to-br from-yellow-100 via-yellow-200 to-yellow-300 relative`}
         suppressHydrationWarning={true}
       >
         <div className="flex min-h-screen">
