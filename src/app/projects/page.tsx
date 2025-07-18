@@ -13,7 +13,7 @@ const projects = [
 
 export default function ProjectsPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-100 via-blue-100 to-green-100 flex items-center justify-center py-16 px-4">
+    <div className="flex-1 flex items-center justify-center min-h-screen w-full bg-transparent py-16 px-4">
       <div className="flex flex-1 justify-center md:justify-end items-center w-full">
         <div className="w-full max-w-xl flex flex-col gap-6">
           {projects.map((project) => (

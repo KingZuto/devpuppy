@@ -28,10 +28,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-gradient-to-br from-yellow-100 via-yellow-200 to-yellow-300 relative`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen relative`}
         suppressHydrationWarning={true}
       >
-        <div className="flex min-h-screen">
+        <div className="flex w-full h-full min-h-screen bg-gradient-to-br from-pink-100 via-blue-100 to-green-100">
           <Sidebar />
           <PageTransition>{children}</PageTransition>
         </div>

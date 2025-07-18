@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export default function InfoPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-100 via-blue-100 to-green-100 flex flex-col items-center justify-center px-4 py-16">
+    <div className="flex-1 flex flex-col items-center justify-center min-h-screen w-full bg-transparent px-4 py-16">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}

@@ -12,7 +12,7 @@ export default function PageTransition({ children }: { children: React.ReactNode
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -20 }}
         transition={{ duration: 0.4 }}
-        className="flex-1 px-8 py-10"
+        className="flex-1 flex items-center justify-center min-h-screen w-full px-8 py-10 bg-transparent"
       >
         {children}
       </motion.main>
