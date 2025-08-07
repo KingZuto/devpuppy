@@ -17,6 +17,7 @@ terraform {
 
 # Terraform Cloud 연동 테스트 - 2025.08.07
 # 완전한 DevOps 환경 구축! 🚀
+# IAM 역할 삭제 완료 - 재시도!
 
 provider "aws" {
   region = var.aws_region
