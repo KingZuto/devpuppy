@@ -1,13 +1,16 @@
 # Copy this file to terraform.tfvars and fill in your values
 
-# GitHub repository URL (e.g., https://github.com/username/devpuppy)
-github_repository = "https://github.com/YOUR_USERNAME/YOUR_REPO"
+# AWS Configuration
+aws_region = "ap-northeast-2"
 
-# GitHub personal access token with repo permissions
-github_access_token = "ghp_your_github_token_here"
+# Application Configuration
+app_name = "devpuppy"
 
-# Optional: Custom domain name
+# GitHub Configuration
+github_owner  = "KingZuto"
+github_repo   = "devpuppy"
+github_branch = "dev"  # dev 브랜치용, prod에서는 "main"으로 변경
+github_token  = "ghp_your_github_token_here"
+
+# Optional: Custom domain
 # domain_name = "your-domain.com"
-
-# AWS region (default: ap-northeast-2 for Seoul)
-# aws_region = "ap-northeast-2"

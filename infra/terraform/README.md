@@ -1,78 +1,72 @@
-# DevPuppy Terraform Infrastructure
+# DevPuppy Infrastructure
 
-이 디렉토리는 AWS Amplify를 사용한 DevPuppy 애플리케이션의 인프라를 관리합니다.
+AWS 인프라를 관리하는 Terraform 설정입니다.
 
 ## 구조
 
 ```
 terraform/
-├── modules/
-│   └── amplify/          # Amplify 모듈
-├── environments/
-│   ├── dev/              # 개발 환경
-│   └── prod/             # 프로덕션 환경
-├── terraform.tfvars.example
-└── README.md
+├── main.tf                 # 메인 Terraform 설정
+├── variables.tf            # 변수 정의
+├── outputs.tf              # 출력값
+├── terraform.tfvars.example # 설정 예시
+├── modules/                # 재사용 가능한 모듈
+│   ├── static-site/        # S3 + CloudFront 정적 사이트
+│   └── cicd/              # CodeBuild + CodePipeline
+└── README.md              # 이 파일
 ```
 
-## 사전 준비
+## 환경 관리
 
-1. **AWS CLI 설정**
-   ```bash
-   aws configure
-   ```
+브랜치 기반으로 환경을 구분합니다:
 
-2. **Terraform 설치**
-   ```bash
-   brew install terraform  # macOS
-   ```
+- **dev 브랜치** → `devpuppy-dev` workspace (개발 환경)
+- **main 브랜치** → `devpuppy-prod` workspace (운영 환경)
 
-3. **GitHub Personal Access Token 생성**
-   - GitHub Settings > Developer settings > Personal access tokens
-   - `repo` 권한 필요
+## Terraform Cloud 설정
 
-## 설정
+### Workspace 설정
+```
+Organization: jsw4562
+Workspace: devpuppy-dev (dev 브랜치용)
+Working Directory: infra/terraform
+Trigger Pattern: infra/**/*
+```
 
-1. **환경 변수 파일 생성**
-   ```bash
-   cd terraform/environments/dev
-   cp ../../terraform.tfvars.example terraform.tfvars
-   ```
+### 환경 변수
+**Environment Variables:**
+- `AWS_ACCESS_KEY_ID`
+- `AWS_SECRET_ACCESS_KEY`
+- `AWS_DEFAULT_REGION`
 
-2. **terraform.tfvars 파일 수정**
-   ```hcl
-   github_repository = "https://github.com/YOUR_USERNAME/devpuppy"
-   github_access_token = "ghp_your_token_here"
-   ```
+**Terraform Variables:**
+- `aws_region`: `ap-northeast-2`
+- `app_name`: `devpuppy`
+- `github_owner`: `KingZuto`
+- `github_repo`: `devpuppy`
+- `github_branch`: `dev` (또는 `main`)
+- `github_token`: GitHub Personal Access Token
 
-## 배포
+## 로컬 개발
 
-### 개발 환경 배포
 ```bash
-cd terraform/environments/dev
+# 1. 설정 파일 복사
+cp terraform.tfvars.example terraform.tfvars
+
+# 2. 값 입력
+vim terraform.tfvars
+
+# 3. Terraform 초기화
 terraform init
+
+# 4. 계획 확인
 terraform plan
+
+# 5. 적용
 terraform apply
 ```
 
-### 프로덕션 환경 배포
-```bash
-cd terraform/environments/prod
-terraform init
-terraform plan
-terraform apply
-```
+## 자동 배포
 
-## 주요 기능
-
-- **자동 빌드**: GitHub에 푸시하면 자동으로 빌드 및 배포
-- **브랜치별 배포**: dev 브랜치는 개발 환경, main 브랜치는 프로덕션 환경
-- **커스텀 도메인**: 선택적으로 커스텀 도메인 설정 가능
-- **환경 변수**: 환경별로 다른 환경 변수 설정
-
-## 출력 정보
-
-배포 완료 후 다음 정보를 확인할 수 있습니다:
-- `app_id`: Amplify 앱 ID
-- `app_url`: 애플리케이션 URL
-- `custom_domain_url`: 커스텀 도메인 URL (설정한 경우)
+- **PR 생성** → `terraform plan` 자동 실행
+- **PR merge** → `terraform apply` 자동 실행
