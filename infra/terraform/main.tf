@@ -16,6 +16,7 @@ terraform {
 }
 
 # Terraform Cloud 연동 테스트 - 2025.08.07
+# PR 워크플로우 테스트
 
 provider "aws" {
   region = var.aws_region
