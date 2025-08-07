@@ -6,6 +6,7 @@ phases:
       nodejs: 20
     commands:
       - echo "Installing dependencies..."
+      - cd app
       - npm ci
   pre_build:
     commands:
@@ -17,13 +18,14 @@ phases:
     commands:
       - echo "Build phase started on `date`"
       - echo "Building Next.js application..."
+      - cd app
       - npm run build
       - echo "Build completed successfully"
   post_build:
     commands:
       - echo "Post-build phase started on `date`"
       - echo "Syncing files to S3 bucket $S3_BUCKET"
-      - aws s3 sync out/ s3://$S3_BUCKET --delete
+      - aws s3 sync app/out/ s3://$S3_BUCKET --delete
       - echo "Creating CloudFront invalidation for distribution $CLOUDFRONT_DISTRIBUTION_ID"
       - aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths "/*"
       - echo "Deployment completed successfully"
@@ -31,9 +33,9 @@ phases:
 artifacts:
   files:
     - '**/*'
-  base-directory: out
+  base-directory: app/out
   name: website-build
 
 cache:
   paths:
-    - node_modules/**/*
+    - app/node_modules/**/*

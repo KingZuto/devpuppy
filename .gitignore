@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+app/node_modules
 /.pnp
 .pnp.*
 .yarn/*
@@ -15,7 +16,9 @@
 
 # next.js
 /.next/
+app/.next/
 /out/
+app/out/
 
 # production
 /build
@@ -39,14 +42,15 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
 # Terraform
-terraform/.terraform/
-terraform/.terraform.lock.hcl
-terraform/terraform.tfstate
-terraform/terraform.tfstate.backup
-terraform/*.tfvars
-terraform/environments/*/terraform.tfstate
-terraform/environments/*/terraform.tfstate.backup
-terraform/environments/*/.terraform/
-terraform/environments/*/.terraform.lock.hcl
-terraform/environments/*/*.tfvars
+infra/terraform/.terraform/
+infra/terraform/.terraform.lock.hcl
+infra/terraform/terraform.tfstate
+infra/terraform/terraform.tfstate.backup
+infra/terraform/*.tfvars
+infra/terraform/environments/*/terraform.tfstate
+infra/terraform/environments/*/terraform.tfstate.backup
+infra/terraform/environments/*/.terraform/
+infra/terraform/environments/*/.terraform.lock.hcl
+infra/terraform/environments/*/*.tfvars
