@@ -9,7 +9,6 @@ terraform/
 ├── main.tf                 # 메인 Terraform 설정
 ├── variables.tf            # 변수 정의
 ├── outputs.tf              # 출력값
-├── terraform.tfvars.example # 설정 예시
 ├── modules/                # 재사용 가능한 모듈
 │   ├── static-site/        # S3 + CloudFront 정적 사이트
 │   └── cicd/              # CodeBuild + CodePipeline
@@ -35,9 +34,9 @@ Trigger Pattern: infra/**/*
 
 ### 환경 변수
 **Environment Variables:**
-- `AWS_ACCESS_KEY_ID`
-- `AWS_SECRET_ACCESS_KEY`
-- `AWS_DEFAULT_REGION`
+- `AWS_ACCESS_KEY_ID` (sensitive)
+- `AWS_SECRET_ACCESS_KEY` (sensitive)
+- `AWS_DEFAULT_REGION`: `ap-northeast-2`
 
 **Terraform Variables:**
 - `aws_region`: `ap-northeast-2`
@@ -45,26 +44,7 @@ Trigger Pattern: infra/**/*
 - `github_owner`: `KingZuto`
 - `github_repo`: `devpuppy`
 - `github_branch`: `dev` (또는 `main`)
-- `github_token`: GitHub Personal Access Token
-
-## 로컬 개발
-
-```bash
-# 1. 설정 파일 복사
-cp terraform.tfvars.example terraform.tfvars
-
-# 2. 값 입력
-vim terraform.tfvars
-
-# 3. Terraform 초기화
-terraform init
-
-# 4. 계획 확인
-terraform plan
-
-# 5. 적용
-terraform apply
-```
+- `github_token`: GitHub Personal Access Token (sensitive)
 
 ## 자동 배포
 
