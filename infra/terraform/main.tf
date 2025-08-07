@@ -15,6 +15,8 @@ terraform {
   }
 }
 
+# Terraform Cloud 연동 테스트 - 2025.08.07
+
 provider "aws" {
   region = var.aws_region
 }
