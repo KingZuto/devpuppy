@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -62,6 +63,16 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-100 via-blue-100 to-green-100 dark:from-gray-800 dark:via-gray-700 dark:to-gray-800 flex flex-col items-center justify-center px-4 py-16 transition-colors duration-300">
+      {/* Home Button */}
+      <div className="absolute top-8 left-8">
+        <Link 
+          href="/" 
+          className="bg-white/20 dark:bg-gray-800/20 backdrop-blur-md text-gray-800 dark:text-white font-bold py-2 px-4 rounded-lg transition-all duration-200 hover:bg-white/30 dark:hover:bg-gray-800/30 border border-white/10 dark:border-gray-700/50"
+        >
+          ← Home
+        </Link>
+      </div>
+
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
@@ -136,6 +147,12 @@ export default function ContactPage() {
           </button>
         </form>
       </motion.div>
+
+      <div className="text-center mt-8">
+        <p className="text-gray-500 dark:text-gray-400 text-sm">
+          🚀 Powered by AWS API Gateway + Lambda + SES
+        </p>
+      </div>
     </div>
   );
 }
