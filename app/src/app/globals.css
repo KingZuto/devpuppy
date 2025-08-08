@@ -22,8 +22,38 @@
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* 수동 다크모드 스타일 추가 */
+.dark body {
+  background: linear-gradient(to bottom right, rgb(17, 24, 39), rgb(31, 41, 55), rgb(17, 24, 39)) !important;
+  color: rgb(243, 244, 246) !important;
+}
+
+.dark aside {
+  background: linear-gradient(to bottom, rgb(23, 23, 23), rgb(31, 31, 31)) !important;
+  border-color: rgb(38, 38, 38) !important;
+}
+
+.dark aside span {
+  color: white !important;
+}
+
+.dark aside a {
+  color: rgb(229, 231, 235) !important;
+}
+
+.dark aside a:hover {
+  color: rgb(250, 204, 21) !important;
+}
+
+.dark main > div {
+  background: linear-gradient(to bottom right, rgb(31, 41, 55), rgb(55, 65, 81), rgb(31, 41, 55)) !important;
+}
+
+.dark h1 {
+  color: white !important;
+}
+
+.dark button {
+  background-color: rgba(23, 23, 23, 0.8) !important;
+  border-color: rgb(38, 38, 38) !important;
 }
