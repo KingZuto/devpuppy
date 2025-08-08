@@ -17,6 +17,7 @@ export default function ContactPage() {
     setStatus(null);
 
     try {
+      console.log('Sending request to API Gateway...');
       const response = await fetch('https://itge6xhtzc.execute-api.ap-northeast-2.amazonaws.com/dev/send-email', {
         method: 'POST',
         headers: {
@@ -25,16 +26,24 @@ export default function ContactPage() {
         body: JSON.stringify(formData),
       });
 
+      console.log('Response status:', response.status);
+      console.log('Response headers:', response.headers);
+
       const data = await response.json();
+      console.log('Response data:', data);
 
       if (response.ok) {
-        setStatus({ type: 'success', message: 'Message sent successfully!' });
+        setStatus({ type: 'success', message: data.message || 'Message sent successfully!' });
         setFormData({ name: '', email: '', message: '' });
       } else {
-        setStatus({ type: 'error', message: data.error || 'Failed to send message' });
+        setStatus({ type: 'error', message: data.error || `Server error: ${response.status}` });
       }
     } catch (error) {
-      setStatus({ type: 'error', message: 'Network error. Please try again.' });
+      console.error('Network error:', error);
+      setStatus({ 
+        type: 'error', 
+        message: `Network error: ${error instanceof Error ? error.message : 'Unknown error'}. Check console for details.` 
+      });
     } finally {
       setIsLoading(false);
     }
