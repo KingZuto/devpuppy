@@ -3,22 +3,34 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 20
+      nodejs: 18
     commands:
       - echo "Installing dependencies..."
-      - cd app && npm ci
+      - echo "Current directory:" && pwd
+      - echo "Directory contents:" && ls -la
+      - cd app
+      - echo "App directory contents:" && ls -la
+      - echo "Installing with npm ci..."
+      - npm ci --verbose
   pre_build:
     commands:
       - echo "Pre-build phase started on `date`"
+      - cd app
       - echo "Checking Node.js and npm versions"
       - node --version
       - npm --version
+      - echo "Checking package.json:"
+      - cat package.json
   build:
     commands:
       - echo "Build phase started on `date`"
+      - cd app
+      - echo "Current directory:" && pwd
+      - echo "Directory contents:" && ls -la
       - echo "Building Next.js application..."
-      - cd app && npm run build
-      - echo "Build completed successfully"
+      - npm run build --verbose
+      - echo "Build completed, checking output:"
+      - ls -la out/
   post_build:
     commands:
       - echo "Post-build phase started on `date`"
