@@ -1,34 +1,124 @@
 "use client";
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 export default function ContactPage() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+  const [isLoading, setIsLoading] = useState(false);
+  const [status, setStatus] = useState<{type: 'success' | 'error', message: string} | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setStatus(null);
+
+    try {
+      const response = await fetch('https://itge6xhtzc.execute-api.ap-northeast-2.amazonaws.com/dev/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setStatus({ type: 'success', message: 'Message sent successfully!' });
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        setStatus({ type: 'error', message: data.error || 'Failed to send message' });
+      }
+    } catch (error) {
+      setStatus({ type: 'error', message: 'Network error. Please try again.' });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-100 via-blue-100 to-green-100 flex flex-col items-center justify-center px-4 py-16">
+    <div className="min-h-screen bg-gradient-to-br from-pink-100 via-blue-100 to-green-100 dark:from-gray-800 dark:via-gray-700 dark:to-gray-800 flex flex-col items-center justify-center px-4 py-16 transition-colors duration-300">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: "easeOut" }}
-        className="max-w-xl w-full bg-white/50 backdrop-blur-md rounded-2xl shadow-xl p-10 flex flex-col items-center gap-8 border border-white/10"
+        className="max-w-xl w-full bg-white/50 dark:bg-gray-800/50 backdrop-blur-md rounded-2xl shadow-xl p-10 flex flex-col items-center gap-8 border border-white/10 dark:border-gray-700/50"
       >
-        <h1 className="text-4xl md:text-5xl font-extrabold text-neutral-900 tracking-tight text-center mb-2">Contact</h1>
-        <p className="text-lg text-neutral-800 text-center mb-4">
-          Let’s work together!<br/>
-          (이메일, SNS, 연락처 등 실제 내용을 나중에 넣으세요)
+        <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white tracking-tight text-center mb-2">Contact</h1>
+        <p className="text-lg text-gray-800 dark:text-gray-200 text-center mb-4">
+          Let's work together!<br/>
+          Send me a message and I'll get back to you soon.
         </p>
+        
         <div className="flex gap-6 justify-center mb-4">
-          <span className="text-3xl hover:text-yellow-500 transition-colors cursor-pointer" title="Email">✉️</span>
-          <span className="text-3xl hover:text-yellow-500 transition-colors cursor-pointer" title="GitHub">🐙</span>
-          <span className="text-3xl hover:text-yellow-500 transition-colors cursor-pointer" title="LinkedIn">💼</span>
+          <span className="text-3xl hover:text-pink-500 dark:hover:text-yellow-400 transition-colors cursor-pointer" title="Email">✉️</span>
+          <span className="text-3xl hover:text-pink-500 dark:hover:text-yellow-400 transition-colors cursor-pointer" title="GitHub">🐙</span>
+          <span className="text-3xl hover:text-pink-500 dark:hover:text-yellow-400 transition-colors cursor-pointer" title="LinkedIn">💼</span>
         </div>
-        <form className="w-full flex flex-col gap-4">
-          <input className="rounded-lg px-4 py-2 bg-white/80 text-neutral-900 placeholder:text-neutral-400 border border-white/10 focus:outline-none focus:ring-2 focus:ring-yellow-300 transition-all" placeholder="Your Name" disabled />
-          <input className="rounded-lg px-4 py-2 bg-white/80 text-neutral-900 placeholder:text-neutral-400 border border-white/10 focus:outline-none focus:ring-2 focus:ring-yellow-300 transition-all" placeholder="Your Email" disabled />
-          <textarea className="rounded-lg px-4 py-2 bg-white/80 text-neutral-900 placeholder:text-neutral-400 border border-white/10 focus:outline-none focus:ring-2 focus:ring-yellow-300 transition-all" placeholder="Your Message" rows={4} disabled />
-          <button type="button" className="mt-2 rounded-lg bg-yellow-400 text-neutral-900 font-bold py-2 transition-all hover:bg-yellow-300 cursor-not-allowed" disabled>
-            Send (Demo)
+
+        <form onSubmit={handleSubmit} className="w-full flex flex-col gap-4">
+          <input 
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            className="rounded-lg px-4 py-2 bg-white/80 dark:bg-gray-700/80 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-300 border border-white/10 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-pink-300 dark:focus:ring-yellow-400 transition-all" 
+            placeholder="Your Name"
+            required
+          />
+          <input 
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            className="rounded-lg px-4 py-2 bg-white/80 dark:bg-gray-700/80 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-300 border border-white/10 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-pink-300 dark:focus:ring-yellow-400 transition-all" 
+            placeholder="Your Email"
+            required
+          />
+          <textarea 
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            className="rounded-lg px-4 py-2 bg-white/80 dark:bg-gray-700/80 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-300 border border-white/10 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-pink-300 dark:focus:ring-yellow-400 transition-all" 
+            placeholder="Your Message"
+            rows={4}
+            maxLength={1000}
+            required
+          />
+          <div className="text-right text-sm text-gray-500 dark:text-gray-400">
+            {formData.message.length}/1000
+          </div>
+          
+          {status && (
+            <div className={`p-3 rounded-lg text-center ${
+              status.type === 'success' 
+                ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300' 
+                : 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300'
+            }`}>
+              {status.message}
+            </div>
+          )}
+
+          <button 
+            type="submit" 
+            disabled={isLoading}
+            className="mt-2 rounded-lg bg-pink-400 hover:bg-pink-500 dark:bg-yellow-400 dark:hover:bg-yellow-500 text-white dark:text-gray-900 font-bold py-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {isLoading ? 'Sending...' : 'Send Message'}
           </button>
         </form>
       </motion.div>
     </div>
   );
-} 
+}
