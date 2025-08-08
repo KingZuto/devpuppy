@@ -77,6 +77,14 @@ resource "aws_iam_role_policy" "codebuild_policy" {
           "cloudfront:CreateInvalidation"
         ]
         Resource = "*"
+      },
+      {
+        Effect = "Allow"
+        Action = [
+          "ses:SendEmail",
+          "ses:SendRawEmail"
+        ]
+        Resource = "*"
       }
     ]
   })
@@ -106,6 +114,22 @@ resource "aws_codebuild_project" "build_project" {
     environment_variable {
       name  = "CLOUDFRONT_DISTRIBUTION_ID"
       value = var.cloudfront_distribution_id
+    }
+
+    # SES Configuration
+    environment_variable {
+      name  = "AWS_REGION"
+      value = "ap-northeast-2"
+    }
+
+    environment_variable {
+      name  = "FROM_EMAIL"
+      value = var.from_email
+    }
+
+    environment_variable {
+      name  = "TO_EMAIL"
+      value = var.to_email
     }
   }
 

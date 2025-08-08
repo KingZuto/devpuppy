@@ -31,4 +31,6 @@ module "cicd" {
   github_repo               = var.github_repo
   github_branch             = var.github_branch
   github_token              = var.github_token
+  from_email                = var.from_email
+  to_email                  = var.to_email
 }

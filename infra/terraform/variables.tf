@@ -39,3 +39,13 @@ variable "domain_name" {
   type        = string
   default     = ""
 }
+
+variable "from_email" {
+  description = "Email address to send from (must be verified in SES)"
+  type        = string
+}
+
+variable "to_email" {
+  description = "Email address to send to"
+  type        = string
+}
