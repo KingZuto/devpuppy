@@ -1,9 +1,20 @@
+# Random ID for unique bucket naming
+resource "random_id" "bucket_suffix" {
+  byte_length = 4
+  
+  keepers = {
+    # 환경이 바뀌면 새로운 ID 생성
+    environment = var.environment
+  }
+}
+
 # S3 Bucket for static website hosting
 resource "aws_s3_bucket" "website" {
-  bucket = "${var.app_name}-${var.environment}-website"
+  bucket        = "${var.app_name}-${var.environment}-website-${random_id.bucket_suffix.hex}"
+  force_destroy = true  # 개발 환경에서 쉬운 삭제를 위해
 
   tags = {
-    Name        = "${var.app_name}-${var.environment}-website"
+    Name        = "${var.app_name}-${var.environment}-website-${random_id.bucket_suffix.hex}"
     Environment = var.environment
   }
 }
@@ -52,7 +63,7 @@ resource "aws_s3_bucket_website_configuration" "website" {
 
 # CloudFront Origin Access Control
 resource "aws_cloudfront_origin_access_control" "website" {
-  name                              = "${var.app_name}-${var.environment}-oac"
+  name                              = "${var.app_name}-${var.environment}-oac-${random_id.bucket_suffix.hex}"
   description                       = "OAC for ${var.app_name} ${var.environment}"
   origin_access_control_origin_type = "s3"
   signing_behavior                  = "always"
@@ -113,7 +124,7 @@ resource "aws_cloudfront_distribution" "website" {
   }
 
   tags = {
-    Name        = "${var.app_name}-${var.environment}-cloudfront"
+    Name        = "${var.app_name}-${var.environment}-cloudfront-${random_id.bucket_suffix.hex}"
     Environment = var.environment
   }
 }
