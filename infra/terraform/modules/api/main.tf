@@ -90,14 +90,17 @@ resource "aws_iam_role_policy" "lambda_policy" {
   })
 }
 
-# Lambda Function
+# Lambda Function with inline code
 resource "aws_lambda_function" "contact_email" {
-  filename         = "contact-email.zip"
-  function_name    = "${var.app_name}-${var.environment}-contact-email-${random_id.api_suffix.hex}"
-  role            = aws_iam_role.lambda_role.arn
-  handler         = "index.handler"
-  runtime         = "nodejs18.x"
-  timeout         = 30
+  function_name = "${var.app_name}-${var.environment}-contact-email-${random_id.api_suffix.hex}"
+  role         = aws_iam_role.lambda_role.arn
+  handler      = "index.handler"
+  runtime      = "nodejs18.x"
+  timeout      = 30
+
+  # Inline code instead of ZIP file
+  filename         = "${path.module}/lambda_function.zip"
+  source_code_hash = data.archive_file.lambda_zip.output_base64sha256
 
   environment {
     variables = {
@@ -111,6 +114,16 @@ resource "aws_lambda_function" "contact_email" {
   tags = {
     Name        = "${var.app_name}-${var.environment}-contact-email-${random_id.api_suffix.hex}"
     Environment = var.environment
+  }
+}
+
+# Create ZIP file from source code
+data "archive_file" "lambda_zip" {
+  type        = "zip"
+  output_path = "${path.module}/lambda_function.zip"
+  source {
+    content = file("${path.module}/lambda_source.js")
+    filename = "index.js"
   }
 }
 
