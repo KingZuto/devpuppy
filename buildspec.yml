@@ -11,34 +11,29 @@ phases:
       - echo "App directory contents:"
       - ls -la app/
       - echo "Installing with npm ci..."
-      - cd app
-      - npm ci --verbose
+      - cd app && npm ci --verbose
   pre_build:
     commands:
       - echo "Pre-build phase started on `date`"
       - echo "Current directory:" && pwd
       - echo "Checking Node.js and npm versions"
-      - cd app
-      - node --version
-      - npm --version
+      - cd $CODEBUILD_SRC_DIR/app && node --version && npm --version
       - echo "Checking package.json:"
-      - cat package.json
+      - cd $CODEBUILD_SRC_DIR/app && cat package.json
   build:
     commands:
       - echo "Build phase started on `date`"
       - echo "Current directory:" && pwd
-      - echo "App directory contents:"
-      - ls -la app/
       - echo "Building Next.js application..."
-      - cd app
-      - npm run build --verbose
+      - cd $CODEBUILD_SRC_DIR/app && npm run build --verbose
       - echo "Build completed, checking output:"
-      - ls -la out/
+      - cd $CODEBUILD_SRC_DIR/app && ls -la out/
   post_build:
     commands:
       - echo "Post-build phase started on `date`"
+      - echo "Current directory:" && pwd
       - echo "Syncing files to S3 bucket $S3_BUCKET"
-      - aws s3 sync app/out/ s3://$S3_BUCKET --delete
+      - aws s3 sync $CODEBUILD_SRC_DIR/app/out/ s3://$S3_BUCKET --delete
       - echo "Creating CloudFront invalidation for distribution $CLOUDFRONT_DISTRIBUTION_ID"
       - aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths "/*"
       - echo "Deployment completed successfully"
