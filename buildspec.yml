@@ -8,20 +8,32 @@ phases:
       - echo "Installing dependencies..."
       - echo "Current directory:" && pwd
       - echo "Directory contents:" && ls -la
-      - cd app && echo "App directory contents:" && ls -la
-      - cd app && echo "Installing with npm ci..." && npm ci --verbose
+      - echo "App directory contents:"
+      - ls -la app/
+      - echo "Installing with npm ci..."
+      - cd app
+      - npm ci --verbose
   pre_build:
     commands:
       - echo "Pre-build phase started on `date`"
       - echo "Current directory:" && pwd
-      - cd app && echo "Checking Node.js and npm versions" && node --version && npm --version
-      - cd app && echo "Checking package.json:" && cat package.json
+      - echo "Checking Node.js and npm versions"
+      - cd app
+      - node --version
+      - npm --version
+      - echo "Checking package.json:"
+      - cat package.json
   build:
     commands:
       - echo "Build phase started on `date`"
-      - cd app && echo "Current directory:" && pwd && echo "Directory contents:" && ls -la
-      - cd app && echo "Building Next.js application..." && npm run build --verbose
-      - cd app && echo "Build completed, checking output:" && ls -la out/
+      - echo "Current directory:" && pwd
+      - echo "App directory contents:"
+      - ls -la app/
+      - echo "Building Next.js application..."
+      - cd app
+      - npm run build --verbose
+      - echo "Build completed, checking output:"
+      - ls -la out/
   post_build:
     commands:
       - echo "Post-build phase started on `date`"
