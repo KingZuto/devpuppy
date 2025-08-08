@@ -107,7 +107,6 @@ resource "aws_lambda_function" "contact_email" {
       DYNAMODB_TABLE = aws_dynamodb_table.rate_limit.name
       FROM_EMAIL     = var.from_email
       TO_EMAIL       = var.to_email
-      AWS_REGION     = var.aws_region
     }
   }
 

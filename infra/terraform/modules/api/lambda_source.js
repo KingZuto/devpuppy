@@ -58,23 +58,37 @@ exports.handler = async (event) => {
                     event.headers?.['x-forwarded-for']?.split(',')[0] || 
                     'unknown';
     
+    // Environment variables (AWS_REGION is automatically available in Lambda)
+    const fromEmail = process.env.FROM_EMAIL;
+    const toEmail = process.env.TO_EMAIL;
+    const dynamoTable = process.env.DYNAMODB_TABLE;
+    
     console.log('Contact form submission:', {
       name,
       email: email.substring(0, 3) + '***', // Log partial email for privacy
       messageLength: message.length,
-      ip: clientIP
+      ip: clientIP,
+      fromEmail: fromEmail ? fromEmail.substring(0, 5) + '***' : 'not set',
+      toEmail: toEmail ? toEmail.substring(0, 5) + '***' : 'not set',
+      dynamoTable: dynamoTable || 'not set'
     });
     
     // TODO: Implement rate limiting with DynamoDB
     // TODO: Implement SES email sending
-    // For now, just return success
+    // For now, just return success with environment info
     
     return {
       statusCode: 200,
       headers: corsHeaders,
       body: JSON.stringify({
-        message: 'Message received! This is a basic implementation. Full SES integration coming soon.',
-        timestamp: new Date().toISOString()
+        message: 'Message received! Lambda function is working correctly.',
+        timestamp: new Date().toISOString(),
+        region: process.env.AWS_REGION || 'unknown', // This is automatically set by AWS
+        environment: {
+          fromEmailSet: !!fromEmail,
+          toEmailSet: !!toEmail,
+          dynamoTableSet: !!dynamoTable
+        }
       })
     };
     
