@@ -81,8 +81,8 @@ export default function ContactPage() {
       >
         <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white tracking-tight text-center mb-2">Contact</h1>
         <p className="text-lg text-gray-800 dark:text-gray-200 text-center mb-4">
-          Let's work together!<br/>
-          Send me a message and I'll get back to you soon.
+          Let&apos;s work together!<br/>
+          Send me a message and I&apos;ll get back to you soon.
         </p>
         
         <div className="flex gap-6 justify-center mb-4">
