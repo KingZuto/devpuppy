@@ -34,3 +34,14 @@ module "cicd" {
   from_email                = var.from_email
   to_email                  = var.to_email
 }
+
+# API Gateway + Lambda for Contact Form
+module "api" {
+  source = "./modules/api"
+
+  app_name    = var.app_name
+  environment = local.environment
+  aws_region  = var.aws_region
+  from_email  = var.from_email
+  to_email    = var.to_email
+}

@@ -23,3 +23,14 @@ output "codepipeline_name" {
   description = "CodePipeline name"
   value       = module.cicd.codepipeline_name
 }
+
+# API Gateway 관련 출력
+output "api_gateway_url" {
+  description = "API Gateway endpoint URL"
+  value       = module.api.api_gateway_invoke_url
+}
+
+output "contact_api_endpoint" {
+  description = "Contact form API endpoint"
+  value       = "${module.api.api_gateway_invoke_url}/send-email"
+}
