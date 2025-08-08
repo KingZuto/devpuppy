@@ -33,10 +33,14 @@ export default function ContactPage() {
       console.log('Response data:', data);
 
       if (response.ok) {
+        console.log('Setting success status...');
         setStatus({ type: 'success', message: data.message || 'Message sent successfully!' });
         setFormData({ name: '', email: '', message: '' });
+        console.log('Status set to success');
       } else {
+        console.log('Setting error status...');
         setStatus({ type: 'error', message: data.error || `Server error: ${response.status}` });
+        console.log('Status set to error');
       }
     } catch (error) {
       console.error('Network error:', error);
@@ -116,6 +120,10 @@ export default function ContactPage() {
                 : 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300'
             }`}>
               {status.message}
+              {/* Debug info */}
+              <div className="text-xs mt-1 opacity-70">
+                Status: {status.type} | Message: {status.message.substring(0, 50)}...
+              </div>
             </div>
           )}
 
