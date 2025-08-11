@@ -145,11 +145,11 @@ export default function ContactPage() {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            className="rounded-lg px-4 py-2 placeholder:text-gray-400 dark:placeholder:text-gray-300 border focus:outline-none focus:ring-2 focus:ring-pink-300 dark:focus:ring-yellow-400 transition-all"
+            className="rounded-lg px-4 py-2 border focus:outline-none focus:ring-2 focus:ring-pink-300 dark:focus:ring-yellow-400 transition-all"
             style={{
               backgroundColor: isDark ? 'rgba(55, 65, 81, 0.8)' : 'rgba(240, 253, 244, 0.9)',
               borderColor: isDark ? 'rgb(75, 85, 99)' : 'rgba(187, 247, 208, 0.5)',
-              color: isDark ? 'white' : 'black'
+              color: isDark ? 'white !important' : 'black !important'
             }}
             placeholder="Your Name"
             required
@@ -159,11 +159,11 @@ export default function ContactPage() {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            className="rounded-lg px-4 py-2 placeholder:text-gray-400 dark:placeholder:text-gray-300 border focus:outline-none focus:ring-2 focus:ring-pink-300 dark:focus:ring-yellow-400 transition-all"
+            className="rounded-lg px-4 py-2 border focus:outline-none focus:ring-2 focus:ring-pink-300 dark:focus:ring-yellow-400 transition-all"
             style={{
               backgroundColor: isDark ? 'rgba(55, 65, 81, 0.8)' : 'rgba(240, 253, 244, 0.9)',
               borderColor: isDark ? 'rgb(75, 85, 99)' : 'rgba(187, 247, 208, 0.5)',
-              color: isDark ? 'white' : 'black'
+              color: isDark ? 'white !important' : 'black !important'
             }}
             placeholder="Your Email"
             required
@@ -172,11 +172,11 @@ export default function ContactPage() {
             name="message"
             value={formData.message}
             onChange={handleChange}
-            className="rounded-lg px-4 py-2 placeholder:text-gray-400 dark:placeholder:text-gray-300 border focus:outline-none focus:ring-2 focus:ring-pink-300 dark:focus:ring-yellow-400 transition-all"
+            className="rounded-lg px-4 py-2 border focus:outline-none focus:ring-2 focus:ring-pink-300 dark:focus:ring-yellow-400 transition-all"
             style={{
               backgroundColor: isDark ? 'rgba(55, 65, 81, 0.8)' : 'rgba(240, 253, 244, 0.9)',
               borderColor: isDark ? 'rgb(75, 85, 99)' : 'rgba(187, 247, 208, 0.5)',
-              color: isDark ? 'white' : 'black'
+              color: isDark ? 'white !important' : 'black !important'
             }}
             placeholder="Your Message"
             rows={4}
