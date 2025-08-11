@@ -1,14 +1,40 @@
 "use client";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 export default function InfoPage() {
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    // 다크모드 상태 확인
+    const checkDarkMode = () => {
+      setIsDark(document.documentElement.classList.contains('dark'));
+    };
+
+    // 초기 확인
+    checkDarkMode();
+
+    // MutationObserver로 다크모드 변경 감지
+    const observer = new MutationObserver(checkDarkMode);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-100 via-blue-100 to-green-100 dark:from-gray-800 dark:via-gray-700 dark:to-gray-800 flex flex-col items-center justify-center px-4 py-16 transition-colors duration-300">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: "easeOut" }}
-        className="max-w-xl w-full bg-blue-50/80 dark:bg-gray-800/50 backdrop-blur-md rounded-2xl shadow-xl p-10 flex flex-col items-center gap-8 border border-blue-200/50 dark:border-gray-700/50"
+        className="max-w-xl w-full backdrop-blur-md rounded-2xl shadow-xl p-10 flex flex-col items-center gap-8 border"
+        style={{
+          backgroundColor: isDark ? 'rgba(31, 41, 55, 0.5)' : 'rgba(239, 246, 255, 0.8)',
+          borderColor: isDark ? 'rgba(55, 65, 81, 0.5)' : 'rgba(191, 219, 254, 0.5)'
+        }}
       >
         <div className="w-24 h-24 rounded-full bg-yellow-400 flex items-center justify-center text-5xl shadow-lg border-4 border-yellow-300 dark:border-yellow-500 mb-2">
           🐶

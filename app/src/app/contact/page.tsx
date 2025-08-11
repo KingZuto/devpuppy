@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 
 export default function ContactPage() {
@@ -11,6 +11,26 @@ export default function ContactPage() {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [status, setStatus] = useState<{type: 'success' | 'error', message: string} | null>(null);
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    // 다크모드 상태 확인
+    const checkDarkMode = () => {
+      setIsDark(document.documentElement.classList.contains('dark'));
+    };
+
+    // 초기 확인
+    checkDarkMode();
+
+    // MutationObserver로 다크모드 변경 감지
+    const observer = new MutationObserver(checkDarkMode);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -89,7 +109,11 @@ export default function ContactPage() {
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: "easeOut" }}
-        className="max-w-xl w-full bg-green-50/80 dark:bg-gray-800/50 backdrop-blur-md rounded-2xl shadow-xl p-10 flex flex-col items-center gap-8 border border-green-200/50 dark:border-gray-700/50"
+        className="max-w-xl w-full backdrop-blur-md rounded-2xl shadow-xl p-10 flex flex-col items-center gap-8 border"
+        style={{
+          backgroundColor: isDark ? 'rgba(31, 41, 55, 0.5)' : 'rgba(240, 253, 244, 0.8)',
+          borderColor: isDark ? 'rgba(55, 65, 81, 0.5)' : 'rgba(187, 247, 208, 0.5)'
+        }}
       >
         <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white tracking-tight text-center mb-2">Contact</h1>
         <p className="text-lg text-gray-800 dark:text-gray-200 text-center mb-4">
@@ -109,7 +133,11 @@ export default function ContactPage() {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            className="rounded-lg px-4 py-2 bg-green-50/90 dark:bg-gray-700/80 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-300 border border-green-200/50 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-pink-300 dark:focus:ring-yellow-400 transition-all" 
+            className="rounded-lg px-4 py-2 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-300 border focus:outline-none focus:ring-2 focus:ring-pink-300 dark:focus:ring-yellow-400 transition-all"
+            style={{
+              backgroundColor: isDark ? 'rgba(55, 65, 81, 0.8)' : 'rgba(240, 253, 244, 0.9)',
+              borderColor: isDark ? 'rgb(75, 85, 99)' : 'rgba(187, 247, 208, 0.5)'
+            }}
             placeholder="Your Name"
             required
           />
@@ -118,7 +146,11 @@ export default function ContactPage() {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            className="rounded-lg px-4 py-2 bg-green-50/90 dark:bg-gray-700/80 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-300 border border-green-200/50 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-pink-300 dark:focus:ring-yellow-400 transition-all" 
+            className="rounded-lg px-4 py-2 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-300 border focus:outline-none focus:ring-2 focus:ring-pink-300 dark:focus:ring-yellow-400 transition-all"
+            style={{
+              backgroundColor: isDark ? 'rgba(55, 65, 81, 0.8)' : 'rgba(240, 253, 244, 0.9)',
+              borderColor: isDark ? 'rgb(75, 85, 99)' : 'rgba(187, 247, 208, 0.5)'
+            }}
             placeholder="Your Email"
             required
           />
@@ -126,7 +158,11 @@ export default function ContactPage() {
             name="message"
             value={formData.message}
             onChange={handleChange}
-            className="rounded-lg px-4 py-2 bg-green-50/90 dark:bg-gray-700/80 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-300 border border-green-200/50 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-pink-300 dark:focus:ring-yellow-400 transition-all" 
+            className="rounded-lg px-4 py-2 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-300 border focus:outline-none focus:ring-2 focus:ring-pink-300 dark:focus:ring-yellow-400 transition-all"
+            style={{
+              backgroundColor: isDark ? 'rgba(55, 65, 81, 0.8)' : 'rgba(240, 253, 244, 0.9)',
+              borderColor: isDark ? 'rgb(75, 85, 99)' : 'rgba(187, 247, 208, 0.5)'
+            }}
             placeholder="Your Message"
             rows={4}
             maxLength={1000}
