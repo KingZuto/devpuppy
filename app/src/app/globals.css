@@ -59,7 +59,15 @@ aside a:hover {
   color: rgb(219, 39, 119) !important;
 }
 
-/* 강제 다크 배경 제거 - 각 페이지의 Tailwind 클래스가 작동하도록 함 */
+/* 배경 강제 스타일 - 각 페이지별로 명시적 적용 */
+.dark .min-h-screen {
+  background: linear-gradient(to bottom right, rgb(31, 41, 55), rgb(55, 65, 81), rgb(31, 41, 55)) !important;
+}
+
+/* 라이트 모드 배경 강제 적용 */
+.min-h-screen {
+  background: linear-gradient(to bottom right, rgb(254, 242, 242), rgb(239, 246, 255), rgb(240, 253, 244)) !important;
+}
 
 .dark h1 {
   color: white !important;
@@ -71,10 +79,6 @@ aside a:hover {
 }
 
 /* 홈페이지 전용 다크모드 스타일 */
-.dark .min-h-screen.bg-gradient-to-br {
-  background: linear-gradient(to bottom right, rgb(31, 41, 55), rgb(55, 65, 81), rgb(31, 41, 55)) !important;
-}
-
 .dark .text-gray-800 {
   color: white !important;
 }
@@ -102,10 +106,6 @@ aside a:hover {
 
 .dark .text-gray-900 {
   color: white !important;
-}
-
-.dark .text-gray-800 {
-  color: rgb(229, 231, 235) !important;
 }
 
 .dark .border-white\/10 {
