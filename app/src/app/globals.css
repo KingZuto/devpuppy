@@ -57,3 +57,57 @@
   background-color: rgba(23, 23, 23, 0.8) !important;
   border-color: rgb(38, 38, 38) !important;
 }
+
+/* 홈페이지 전용 다크모드 스타일 */
+.dark .min-h-screen.bg-gradient-to-br {
+  background: linear-gradient(to bottom right, rgb(31, 41, 55), rgb(55, 65, 81), rgb(31, 41, 55)) !important;
+}
+
+.dark .text-gray-800 {
+  color: white !important;
+}
+
+.dark .text-gray-600 {
+  color: rgb(209, 213, 219) !important;
+}
+
+.dark .text-gray-500 {
+  color: rgb(156, 163, 175) !important;
+}
+
+/* 컨택트 페이지 전용 다크모드 스타일 */
+.dark .bg-white\/50 {
+  background-color: rgba(31, 41, 55, 0.5) !important;
+}
+
+.dark .bg-white\/20 {
+  background-color: rgba(31, 41, 55, 0.2) !important;
+}
+
+.dark .bg-white\/80 {
+  background-color: rgba(55, 65, 81, 0.8) !important;
+}
+
+.dark .text-gray-900 {
+  color: white !important;
+}
+
+.dark .text-gray-800 {
+  color: rgb(229, 231, 235) !important;
+}
+
+.dark .border-white\/10 {
+  border-color: rgba(75, 85, 99, 0.3) !important;
+}
+
+.dark .bg-pink-400 {
+  background-color: rgb(250, 204, 21) !important;
+}
+
+.dark .bg-pink-400:hover {
+  background-color: rgb(245, 158, 11) !important;
+}
+
+.dark .text-white {
+  color: rgb(17, 24, 39) !important;
+}
