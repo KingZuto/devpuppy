@@ -17,7 +17,7 @@ export default function InfoPage() {
         <div className="text-lg text-neutral-800 dark:text-gray-200 text-center mb-4 flex flex-col gap-2">
           <span>Hello!</span>
           <span>
-            I'm <span className="font-bold text-yellow-500 dark:text-yellow-400">DevPuppy</span>, an aspiring developer passionate about DevOps and cloud technologies.
+            I&apos;m <span className="font-bold text-yellow-500 dark:text-yellow-400">DevPuppy</span>, an aspiring developer passionate about DevOps and cloud technologies.
           </span>
           <span className="mt-2 font-semibold text-yellow-500 dark:text-yellow-400">Key Interests</span>
           <span>AWS, DevOps, Cloud Infrastructure, Automation, Web Frontend</span>
