@@ -149,7 +149,7 @@ export default function ContactPage() {
             style={{
               backgroundColor: isDark ? 'rgba(55, 65, 81, 0.8)' : 'rgba(240, 253, 244, 0.9)',
               borderColor: isDark ? 'rgb(75, 85, 99)' : 'rgba(187, 247, 208, 0.5)',
-              color: isDark ? 'white' : 'rgb(17, 24, 39)'
+              color: isDark ? 'white' : 'black'
             }}
             placeholder="Your Name"
             required
@@ -163,7 +163,7 @@ export default function ContactPage() {
             style={{
               backgroundColor: isDark ? 'rgba(55, 65, 81, 0.8)' : 'rgba(240, 253, 244, 0.9)',
               borderColor: isDark ? 'rgb(75, 85, 99)' : 'rgba(187, 247, 208, 0.5)',
-              color: isDark ? 'white' : 'rgb(17, 24, 39)'
+              color: isDark ? 'white' : 'black'
             }}
             placeholder="Your Email"
             required
@@ -176,7 +176,7 @@ export default function ContactPage() {
             style={{
               backgroundColor: isDark ? 'rgba(55, 65, 81, 0.8)' : 'rgba(240, 253, 244, 0.9)',
               borderColor: isDark ? 'rgb(75, 85, 99)' : 'rgba(187, 247, 208, 0.5)',
-              color: isDark ? 'white' : 'rgb(17, 24, 39)'
+              color: isDark ? 'white' : 'black'
             }}
             placeholder="Your Message"
             rows={4}
