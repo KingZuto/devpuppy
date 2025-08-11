@@ -59,9 +59,7 @@ aside a:hover {
   color: rgb(219, 39, 119) !important;
 }
 
-.dark main > div {
-  background: linear-gradient(to bottom right, rgb(31, 41, 55), rgb(55, 65, 81), rgb(31, 41, 55)) !important;
-}
+/* 강제 다크 배경 제거 - 각 페이지의 Tailwind 클래스가 작동하도록 함 */
 
 .dark h1 {
   color: white !important;
