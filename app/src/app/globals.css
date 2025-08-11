@@ -28,6 +28,7 @@
   color: rgb(243, 244, 246) !important;
 }
 
+/* 사이드바 스타일 */
 .dark aside {
   background: linear-gradient(to bottom, rgb(23, 23, 23), rgb(31, 31, 31)) !important;
   border-color: rgb(38, 38, 38) !important;
@@ -38,11 +39,24 @@
 }
 
 .dark aside a {
-  color: rgb(229, 231, 235) !important;
+  color: rgb(243, 244, 246) !important;
 }
 
 .dark aside a:hover {
   color: rgb(250, 204, 21) !important;
+}
+
+/* 라이트 모드에서 사이드바 텍스트 더 진하게 */
+aside span {
+  color: rgb(17, 24, 39) !important;
+}
+
+aside a {
+  color: rgb(17, 24, 39) !important;
+}
+
+aside a:hover {
+  color: rgb(219, 39, 119) !important;
 }
 
 .dark main > div {
