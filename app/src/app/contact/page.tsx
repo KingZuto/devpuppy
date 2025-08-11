@@ -115,8 +115,20 @@ export default function ContactPage() {
           borderColor: isDark ? 'rgba(55, 65, 81, 0.5)' : 'rgba(187, 247, 208, 0.5)'
         }}
       >
-        <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white tracking-tight text-center mb-2">Contact</h1>
-        <p className="text-lg text-gray-800 dark:text-gray-200 text-center mb-4">
+        <h1 
+          className="text-4xl md:text-5xl font-extrabold tracking-tight text-center mb-2"
+          style={{
+            color: isDark ? 'white' : 'rgb(17, 24, 39)'
+          }}
+        >
+          Contact
+        </h1>
+        <p 
+          className="text-lg text-center mb-4"
+          style={{
+            color: isDark ? 'rgb(229, 231, 235)' : 'rgb(31, 41, 55)'
+          }}
+        >
           Let&apos;s work together!<br/>
           Send me a message and I&apos;ll get back to you soon.
         </p>

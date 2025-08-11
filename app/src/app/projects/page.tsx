@@ -48,8 +48,22 @@ export default function ProjectsPage() {
               }}
             >
               <div className="flex flex-col gap-1 items-end">
-                <span className="text-[64px] font-extralight text-neutral-900 dark:text-white group-hover:text-yellow-500 dark:group-hover:text-yellow-400 transition-colors leading-tight">{project.name}</span>
-                <span className="text-neutral-500 dark:text-neutral-400 text-base mt-1">{project.date}</span>
+                <span 
+                  className="text-[64px] font-extralight group-hover:text-yellow-500 dark:group-hover:text-yellow-400 transition-colors leading-tight"
+                  style={{
+                    color: isDark ? 'white' : 'rgb(17, 24, 39)'
+                  }}
+                >
+                  {project.name}
+                </span>
+                <span 
+                  className="text-base mt-1"
+                  style={{
+                    color: isDark ? 'rgb(156, 163, 175)' : 'rgb(107, 114, 128)'
+                  }}
+                >
+                  {project.date}
+                </span>
               </div>
             </div>
           ))}
