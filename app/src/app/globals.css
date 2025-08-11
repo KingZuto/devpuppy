@@ -79,8 +79,12 @@ aside a:hover {
 }
 
 /* 홈페이지 전용 다크모드 스타일 */
-.dark .text-gray-800 {
+.dark .text-black {
   color: white !important;
+}
+
+.dark .text-gray-900 {
+  color: rgb(229, 231, 235) !important;
 }
 
 .dark .text-gray-600 {
