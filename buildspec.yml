@@ -22,11 +22,12 @@ phases:
       - cd $CODEBUILD_SRC_DIR/app && cat package.json
       - echo "Getting API Gateway URL from AWS..."
       - API_ID=$(aws apigateway get-rest-apis --region ap-northeast-2 --query 'items[?name==`devpuppy-dev-contact-api-4b5c150a`].id' --output text)
-      - if [ ! -z "$API_ID" ] && [ "$API_ID" != "None" ]; then 
-          export NEXT_PUBLIC_API_GATEWAY_URL="https://$API_ID.execute-api.ap-northeast-2.amazonaws.com/dev"; 
-          echo "Set NEXT_PUBLIC_API_GATEWAY_URL=$NEXT_PUBLIC_API_GATEWAY_URL";
+      - |
+        if [ ! -z "$API_ID" ] && [ "$API_ID" != "None" ]; then 
+          export NEXT_PUBLIC_API_GATEWAY_URL="https://$API_ID.execute-api.ap-northeast-2.amazonaws.com/dev"
+          echo "Set NEXT_PUBLIC_API_GATEWAY_URL=$NEXT_PUBLIC_API_GATEWAY_URL"
         else 
-          echo "Warning: Could not find API Gateway, using fallback"; 
+          echo "Warning: Could not find API Gateway, using fallback"
         fi
   build:
     commands:
