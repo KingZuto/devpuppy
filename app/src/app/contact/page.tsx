@@ -19,7 +19,9 @@ export default function ContactPage() {
 
     try {
       console.log('Sending request to API Gateway...');
-      const response = await fetch('https://itge6xhtzc.execute-api.ap-northeast-2.amazonaws.com/dev/send-email', {
+      const apiUrl = process.env.NEXT_PUBLIC_API_GATEWAY_URL || 'https://8nvu3xobn1.execute-api.ap-northeast-2.amazonaws.com/dev';
+      console.log('API URL:', apiUrl);
+      const response = await fetch(`${apiUrl}/send-email`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
