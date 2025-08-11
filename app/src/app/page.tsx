@@ -5,10 +5,10 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-100 via-blue-100 to-green-100 dark:from-gray-800 dark:via-gray-700 dark:to-gray-800 flex flex-col items-center justify-center transition-colors duration-300">
       <div className="text-center">
-        <h1 className="text-6xl font-bold text-gray-800 dark:text-white mb-8">
+        <h1 className="text-6xl font-bold text-black dark:text-white mb-8">
           🐶 DevPuppy
         </h1>
-        <p className="text-xl text-gray-600 dark:text-gray-300 mb-12">
+        <p className="text-xl text-gray-900 dark:text-gray-300 mb-12">
           Welcome to my portfolio website
         </p>
         
