@@ -29,6 +29,11 @@
 }
 
 /* 사이드바 스타일 */
+/* 사이드바 강제 스타일 */
+aside {
+  border-color: rgba(251, 207, 232, 0.3) !important; /* 연한 핑크 */
+}
+
 .dark aside {
   background: linear-gradient(to bottom, rgb(23, 23, 23), rgb(31, 31, 31)) !important;
   border-color: rgb(38, 38, 38) !important;
