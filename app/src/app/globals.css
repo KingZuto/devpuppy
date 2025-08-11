@@ -73,12 +73,7 @@ aside a:hover {
   color: white !important;
 }
 
-.dark button {
-  background-color: rgba(23, 23, 23, 0.8) !important;
-  border-color: rgb(38, 38, 38) !important;
-}
-
-/* 홈페이지 전용 다크모드 스타일 */
+/* 홈페이지 제목과 설명만 예외 처리 */
 .dark .text-black {
   color: white !important;
 }
@@ -87,8 +82,13 @@ aside a:hover {
   color: rgb(229, 231, 235) !important;
 }
 
-.dark .text-gray-600 {
-  color: rgb(209, 213, 219) !important;
+/* 라이트 모드에서 홈페이지 텍스트 강제 적용 */
+.text-black {
+  color: black !important;
+}
+
+.text-gray-900 {
+  color: rgb(17, 24, 39) !important;
 }
 
 .dark .text-gray-500 {
