@@ -8,7 +8,7 @@ export default function InfoPage() {
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: "easeOut" }}
-        className="max-w-xl w-full bg-white/50 dark:bg-gray-800/50 backdrop-blur-md rounded-2xl shadow-xl p-10 flex flex-col items-center gap-8 border border-white/10 dark:border-gray-700/50"
+        className="max-w-xl w-full bg-blue-50/80 dark:bg-gray-800/50 backdrop-blur-md rounded-2xl shadow-xl p-10 flex flex-col items-center gap-8 border border-blue-200/50 dark:border-gray-700/50"
       >
         <div className="w-24 h-24 rounded-full bg-yellow-400 flex items-center justify-center text-5xl shadow-lg border-4 border-yellow-300 dark:border-yellow-500 mb-2">
           🐶

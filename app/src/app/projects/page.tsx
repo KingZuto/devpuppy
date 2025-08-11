@@ -20,7 +20,7 @@ export default function ProjectsPage() {
           {projects.map((project) => (
             <div
               key={project.name}
-              className="rounded-2xl bg-white/60 dark:bg-gray-800/60 border border-white/40 dark:border-gray-700/40 shadow-lg p-6 transition-transform transition-shadow duration-200 hover:scale-[1.025] hover:shadow-2xl cursor-pointer group text-right backdrop-blur-md"
+              className="rounded-2xl bg-pink-50/80 dark:bg-gray-800/60 border border-pink-200/50 dark:border-gray-700/40 shadow-lg p-6 transition-transform transition-shadow duration-200 hover:scale-[1.025] hover:shadow-2xl cursor-pointer group text-right backdrop-blur-md"
             >
               <div className="flex flex-col gap-1 items-end">
                 <span className="text-[64px] font-extralight text-neutral-900 dark:text-white group-hover:text-yellow-500 dark:group-hover:text-yellow-400 transition-colors leading-tight">{project.name}</span>

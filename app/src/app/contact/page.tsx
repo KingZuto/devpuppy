@@ -89,7 +89,7 @@ export default function ContactPage() {
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: "easeOut" }}
-        className="max-w-xl w-full bg-white/50 dark:bg-gray-800/50 backdrop-blur-md rounded-2xl shadow-xl p-10 flex flex-col items-center gap-8 border border-white/10 dark:border-gray-700/50"
+        className="max-w-xl w-full bg-green-50/80 dark:bg-gray-800/50 backdrop-blur-md rounded-2xl shadow-xl p-10 flex flex-col items-center gap-8 border border-green-200/50 dark:border-gray-700/50"
       >
         <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white tracking-tight text-center mb-2">Contact</h1>
         <p className="text-lg text-gray-800 dark:text-gray-200 text-center mb-4">
@@ -109,7 +109,7 @@ export default function ContactPage() {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            className="rounded-lg px-4 py-2 bg-white/80 dark:bg-gray-700/80 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-300 border border-white/10 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-pink-300 dark:focus:ring-yellow-400 transition-all" 
+            className="rounded-lg px-4 py-2 bg-green-50/90 dark:bg-gray-700/80 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-300 border border-green-200/50 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-pink-300 dark:focus:ring-yellow-400 transition-all" 
             placeholder="Your Name"
             required
           />
@@ -118,7 +118,7 @@ export default function ContactPage() {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            className="rounded-lg px-4 py-2 bg-white/80 dark:bg-gray-700/80 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-300 border border-white/10 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-pink-300 dark:focus:ring-yellow-400 transition-all" 
+            className="rounded-lg px-4 py-2 bg-green-50/90 dark:bg-gray-700/80 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-300 border border-green-200/50 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-pink-300 dark:focus:ring-yellow-400 transition-all" 
             placeholder="Your Email"
             required
           />
@@ -126,7 +126,7 @@ export default function ContactPage() {
             name="message"
             value={formData.message}
             onChange={handleChange}
-            className="rounded-lg px-4 py-2 bg-white/80 dark:bg-gray-700/80 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-300 border border-white/10 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-pink-300 dark:focus:ring-yellow-400 transition-all" 
+            className="rounded-lg px-4 py-2 bg-green-50/90 dark:bg-gray-700/80 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-300 border border-green-200/50 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-pink-300 dark:focus:ring-yellow-400 transition-all" 
             placeholder="Your Message"
             rows={4}
             maxLength={1000}
