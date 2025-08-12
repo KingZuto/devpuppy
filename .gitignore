@@ -54,6 +54,4 @@ infra/terraform/environments/*/terraform.tfstate.backup
 infra/terraform/environments/*/.terraform/
 infra/terraform/environments/*/.terraform.lock.hcl
 infra/terraform/environments/*/*.tfvars
-
-# 대화 기록 (개인 기록용)
 대화/

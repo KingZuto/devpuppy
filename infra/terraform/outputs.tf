@@ -13,7 +13,6 @@ output "website_url" {
   value       = module.static_site.website_url
 }
 
-# CI/CD 관련 출력
 output "codebuild_project_name" {
   description = "CodeBuild project name"
   value       = module.cicd.codebuild_project_name
