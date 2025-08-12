@@ -24,6 +24,7 @@ module "cicd" {
 
   app_name                   = var.app_name
   environment               = local.environment
+  aws_region                = var.aws_region
   s3_bucket_name            = module.static_site.s3_bucket_name
   s3_bucket_arn             = module.static_site.s3_bucket_arn
   cloudfront_distribution_id = module.static_site.cloudfront_distribution_id

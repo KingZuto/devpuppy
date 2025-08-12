@@ -40,11 +40,21 @@ export default function ContactPage() {
     try {
       console.log('Sending request to API Gateway...');
       
-      // 현재 배포된 올바른 API Gateway URL 사용
-      const apiUrl = 'https://yquxen9m2g.execute-api.ap-northeast-2.amazonaws.com/dev';
-      console.log('Using API URL:', apiUrl);
+      // 환경 변수에서 API 엔드포인트 가져오기 (빌드 시 주입됨)
+      const apiEndpoint = process.env.NEXT_PUBLIC_CONTACT_API_ENDPOINT;
       
-      const response = await fetch(`${apiUrl}/send-email`, {
+      if (!apiEndpoint) {
+        console.error('API endpoint not configured!');
+        setStatus({ 
+          type: 'error', 
+          message: 'Configuration error: API endpoint not found. Please contact administrator.' 
+        });
+        return;
+      }
+      
+      console.log('Using API endpoint:', apiEndpoint);
+      
+      const response = await fetch(apiEndpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

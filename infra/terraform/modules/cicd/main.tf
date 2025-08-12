@@ -85,6 +85,23 @@ resource "aws_iam_role_policy" "codebuild_policy" {
           "ses:SendRawEmail"
         ]
         Resource = "*"
+      },
+      {
+        Effect = "Allow"
+        Action = [
+          "ssm:GetParameter",
+          "ssm:GetParameters"
+        ]
+        Resource = [
+          "arn:aws:ssm:${var.aws_region}:*:parameter/${var.app_name}/${var.environment}/*"
+        ]
+      },
+      {
+        Effect = "Allow"
+        Action = [
+          "apigateway:GET"
+        ]
+        Resource = "*"
       }
     ]
   })
