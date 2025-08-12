@@ -1,6 +1,15 @@
+# Random ID for unique resource naming
+resource "random_id" "cicd_suffix" {
+  byte_length = 4
+  
+  keepers = {
+    environment = var.environment
+  }
+}
+
 # IAM Role for CodeBuild
 resource "aws_iam_role" "codebuild_role" {
-  name = "${var.app_name}-${var.environment}-codebuild-role"
+  name = "${var.app_name}-${var.environment}-codebuild-role-${random_id.cicd_suffix.hex}"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
@@ -16,7 +25,7 @@ resource "aws_iam_role" "codebuild_role" {
   })
 
   tags = {
-    Name        = "${var.app_name}-${var.environment}-codebuild-role"
+    Name        = "${var.app_name}-${var.environment}-codebuild-role-${random_id.cicd_suffix.hex}"
     Environment = var.environment
   }
 }
@@ -68,6 +77,14 @@ resource "aws_iam_role_policy" "codebuild_policy" {
           "cloudfront:CreateInvalidation"
         ]
         Resource = "*"
+      },
+      {
+        Effect = "Allow"
+        Action = [
+          "ses:SendEmail",
+          "ses:SendRawEmail"
+        ]
+        Resource = "*"
       }
     ]
   })
@@ -75,7 +92,7 @@ resource "aws_iam_role_policy" "codebuild_policy" {
 
 # CodeBuild Project
 resource "aws_codebuild_project" "build_project" {
-  name          = "${var.app_name}-${var.environment}-build"
+  name          = "${var.app_name}-${var.environment}-build-${random_id.cicd_suffix.hex}"
   description   = "Build project for ${var.app_name} ${var.environment}"
   service_role  = aws_iam_role.codebuild_role.arn
 
@@ -98,6 +115,22 @@ resource "aws_codebuild_project" "build_project" {
       name  = "CLOUDFRONT_DISTRIBUTION_ID"
       value = var.cloudfront_distribution_id
     }
+
+    # SES Configuration
+    environment_variable {
+      name  = "AWS_REGION"
+      value = "ap-northeast-2"
+    }
+
+    environment_variable {
+      name  = "FROM_EMAIL"
+      value = var.from_email
+    }
+
+    environment_variable {
+      name  = "TO_EMAIL"
+      value = var.to_email
+    }
   }
 
   source {
@@ -106,14 +139,14 @@ resource "aws_codebuild_project" "build_project" {
   }
 
   tags = {
-    Name        = "${var.app_name}-${var.environment}-build"
+    Name        = "${var.app_name}-${var.environment}-build-${random_id.cicd_suffix.hex}"
     Environment = var.environment
   }
 }
 
 # IAM Role for CodePipeline
 resource "aws_iam_role" "codepipeline_role" {
-  name = "${var.app_name}-${var.environment}-codepipeline-role"
+  name = "${var.app_name}-${var.environment}-codepipeline-role-${random_id.cicd_suffix.hex}"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
@@ -129,17 +162,18 @@ resource "aws_iam_role" "codepipeline_role" {
   })
 
   tags = {
-    Name        = "${var.app_name}-${var.environment}-codepipeline-role"
+    Name        = "${var.app_name}-${var.environment}-codepipeline-role-${random_id.cicd_suffix.hex}"
     Environment = var.environment
   }
 }
 
 # S3 Bucket for CodePipeline artifacts
 resource "aws_s3_bucket" "codepipeline_artifacts" {
-  bucket = "${var.app_name}-${var.environment}-codepipeline-artifacts"
+  bucket        = "${var.app_name}-${var.environment}-codepipeline-artifacts-${random_id.cicd_suffix.hex}"
+  force_destroy = true  # 개발 환경에서 쉬운 삭제를 위해
 
   tags = {
-    Name        = "${var.app_name}-${var.environment}-codepipeline-artifacts"
+    Name        = "${var.app_name}-${var.environment}-codepipeline-artifacts-${random_id.cicd_suffix.hex}"
     Environment = var.environment
   }
 }
@@ -186,7 +220,7 @@ resource "aws_iam_role_policy" "codepipeline_policy" {
 
 # CodePipeline
 resource "aws_codepipeline" "pipeline" {
-  name     = "${var.app_name}-${var.environment}-pipeline"
+  name     = "${var.app_name}-${var.environment}-pipeline-${random_id.cicd_suffix.hex}"
   role_arn = aws_iam_role.codepipeline_role.arn
 
   artifact_store {
@@ -232,7 +266,7 @@ resource "aws_codepipeline" "pipeline" {
   }
 
   tags = {
-    Name        = "${var.app_name}-${var.environment}-pipeline"
+    Name        = "${var.app_name}-${var.environment}-pipeline-${random_id.cicd_suffix.hex}"
     Environment = var.environment
   }
 }

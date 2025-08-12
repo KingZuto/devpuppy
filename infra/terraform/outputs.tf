@@ -13,7 +13,6 @@ output "website_url" {
   value       = module.static_site.website_url
 }
 
-
 output "codebuild_project_name" {
   description = "CodeBuild project name"
   value       = module.cicd.codebuild_project_name
@@ -24,4 +23,13 @@ output "codepipeline_name" {
   value       = module.cicd.codepipeline_name
 }
 
-# trigger
+# API Gateway 관련 출력
+output "api_gateway_url" {
+  description = "API Gateway endpoint URL"
+  value       = module.api.api_gateway_invoke_url
+}
+
+output "contact_api_endpoint" {
+  description = "Contact form API endpoint"
+  value       = "${module.api.api_gateway_invoke_url}/send-email"
+}

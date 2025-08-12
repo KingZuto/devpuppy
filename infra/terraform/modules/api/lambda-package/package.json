@@ -1,0 +1,10 @@
+{
+  "name": "devpuppy-contact-lambda",
+  "version": "1.0.0",
+  "description": "Lambda function for DevPuppy contact form",
+  "main": "index.js",
+  "dependencies": {
+    "@aws-sdk/client-ses": "^3.0.0",
+    "@aws-sdk/client-dynamodb": "^3.0.0"
+  }
+}
