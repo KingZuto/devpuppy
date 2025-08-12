@@ -50,3 +50,4 @@ AWS CodeBuild를 통한 자동 배포가 설정되어 있습니다. `buildspec.y
 - [Next.js Documentation](https://nextjs.org/docs) - Next.js 기능과 API 학습
 - [AWS Documentation](https://docs.aws.amazon.com/) - AWS 서비스 가이드
 - [Terraform Documentation](https://www.terraform.io/docs) - 인프라 코드 관리
+# 자동 배포 테스트 - Fri Aug  8 14:08:50 KST 2025
