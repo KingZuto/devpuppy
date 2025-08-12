@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DevPuppy
 
-## Getting Started
+AWS 기반 Next.js 웹 애플리케이션 프로젝트
 
-First, run the development server:
+## 프로젝트 구조
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+devpuppy/
+├── app/                    # Next.js 애플리케이션
+│   ├── src/               # 소스 코드
+│   ├── public/            # 정적 파일
+│   ├── package.json       # 앱 의존성
+│   └── ...               # Next.js 관련 설정 파일들
+├── infra/                 # AWS 인프라 (Terraform)
+│   └── terraform/         # Terraform 설정
+│       ├── modules/       # 재사용 가능한 모듈
+│       └── environments/  # 환경별 설정 (dev, prod)
+├── docs/                  # 문서
+├── buildspec.yml          # AWS CodeBuild 설정
+└── README.md             # 프로젝트 개요
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 시작하기
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 애플리케이션 개발
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+cd app
+npm install
+npm run dev
+```
 
-## Learn More
+[http://localhost:3000](http://localhost:3000)에서 결과를 확인할 수 있습니다.
 
-To learn more about Next.js, take a look at the following resources:
+### 인프라 관리
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+cd infra/terraform/environments/dev
+terraform init
+terraform plan
+terraform apply
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 배포
 
-## Deploy on Vercel
+AWS CodeBuild를 통한 자동 배포가 설정되어 있습니다. `buildspec.yml` 파일이 빌드 과정을 정의합니다.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 더 알아보기
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [Next.js Documentation](https://nextjs.org/docs) - Next.js 기능과 API 학습
+- [AWS Documentation](https://docs.aws.amazon.com/) - AWS 서비스 가이드
+- [Terraform Documentation](https://www.terraform.io/docs) - 인프라 코드 관리
+# 자동 배포 테스트 - Fri Aug  8 14:08:50 KST 2025

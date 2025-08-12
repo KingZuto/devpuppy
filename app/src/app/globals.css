@@ -1,0 +1,403 @@
+@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ========================================
+   🎵 ZUTOMAYO COLOR SYSTEM
+   ======================================== */
+
+:root {
+  /* 🎨 Pastel Base Colors */
+  --pastel-pink: #FFB3D9;
+  --pastel-blue: #B3D9FF;  
+  --pastel-mint: #B3FFD9;
+  --pastel-purple: #D9B3FF;
+  --pastel-yellow: #FFEBB3;
+  --pastel-coral: #FFB3B3;
+  
+  /* ✨ Neon Accent Colors */
+  --neon-pink: #FF1493;
+  --neon-cyan: #00FFFF;
+  --neon-yellow: #FFFF00;
+  --neon-purple: #9D4EDD;
+  --neon-orange: #FF6B35;
+  --neon-green: #06FFA5;
+  
+  /* 🌈 Gradient Combinations */
+  --gradient-dreamy: linear-gradient(135deg, var(--pastel-pink), var(--pastel-blue), var(--pastel-mint));
+  --gradient-neon: linear-gradient(135deg, var(--neon-pink), var(--neon-purple), var(--neon-cyan));
+  --gradient-sunset: linear-gradient(135deg, var(--pastel-coral), var(--pastel-yellow), var(--pastel-pink));
+  
+  /* 🎯 Default Theme Variables */
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+/* ========================================
+   🌞 LIGHT MODE
+   ======================================== */
+
+body {
+  background: linear-gradient(to bottom right, rgb(254, 242, 242), rgb(239, 246, 255), rgb(240, 253, 244));
+  color: rgb(17, 24, 39);
+  transition: all 0.3s ease;
+}
+
+.min-h-screen {
+  background: linear-gradient(to bottom right, rgb(254, 242, 242), rgb(239, 246, 255), rgb(240, 253, 244));
+  transition: background 0.3s ease;
+}
+
+/* Light mode text colors */
+h1, h2, h3, h4, h5, h6 {
+  color: rgb(17, 24, 39) !important;
+}
+
+p, span, div {
+  color: rgb(55, 65, 81) !important;
+}
+
+/* Light mode sidebar */
+aside {
+  background: rgba(255, 255, 255, 0.8) !important;
+  border-color: rgba(251, 207, 232, 0.3) !important;
+}
+
+aside span, aside a {
+  color: rgb(17, 24, 39) !important;
+}
+
+aside a:hover {
+  color: rgb(219, 39, 119) !important;
+}
+
+/* ========================================
+   🌙 DARK MODE
+   ======================================== */
+
+.dark body {
+  background: linear-gradient(to bottom right, rgb(17, 24, 39), rgb(31, 41, 55), rgb(17, 24, 39));
+  color: rgb(243, 244, 246);
+}
+
+.dark .min-h-screen {
+  background: linear-gradient(to bottom right, rgb(31, 41, 55), rgb(55, 65, 81), rgb(31, 41, 55));
+}
+
+/* Dark mode text colors */
+.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+  color: rgb(243, 244, 246) !important;
+}
+
+.dark p, .dark span, .dark div {
+  color: rgb(229, 231, 235) !important;
+}
+
+/* Dark mode sidebar */
+.dark aside {
+  background: linear-gradient(to bottom, rgb(23, 23, 23), rgb(31, 31, 31)) !important;
+  border-color: rgb(38, 38, 38) !important;
+}
+
+.dark aside span, .dark aside a {
+  color: rgb(243, 244, 246) !important;
+}
+
+.dark aside a:hover {
+  color: rgb(250, 204, 21) !important;
+}
+
+/* ========================================
+   🎵 ZUTOMAYO MODE
+   ======================================== */
+
+.hyper body {
+  background: var(--gradient-dreamy);
+  color: #2d3748;
+  animation: hyper-bg-shift 10s ease-in-out infinite;
+}
+
+.hyper .min-h-screen {
+  background: var(--gradient-dreamy);
+  animation: hyper-bg-shift 10s ease-in-out infinite;
+}
+
+/* Zutomayo mode text colors */
+.hyper h1 {
+  background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple), var(--neon-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: hyper-text-shift 3s ease-in-out infinite;
+}
+
+.hyper h2, .hyper h3, .hyper h4, .hyper h5, .hyper h6 {
+  color: #2d3748 !important;
+  font-weight: bold;
+}
+
+.hyper p, .hyper span, .hyper div {
+  color: #4a5568 !important;
+}
+
+/* Zutomayo mode sidebar */
+.hyper aside {
+  background: rgba(255, 255, 255, 0.4) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 2px solid var(--pastel-pink) !important;
+}
+
+.hyper aside span, .hyper aside a {
+  color: #2d3748 !important;
+  font-weight: 600;
+}
+
+.hyper aside a:hover {
+  color: var(--neon-pink) !important;
+  text-shadow: 0 0 10px var(--neon-pink);
+}
+
+@keyframes hyper-bg-shift {
+  0%, 100% { 
+    background: linear-gradient(135deg, var(--pastel-pink), var(--pastel-blue), var(--pastel-mint));
+  }
+  33% { 
+    background: linear-gradient(135deg, var(--pastel-blue), var(--pastel-mint), var(--pastel-purple));
+  }
+  66% { 
+    background: linear-gradient(135deg, var(--pastel-mint), var(--pastel-purple), var(--pastel-pink));
+  }
+}
+
+/* ========================================
+   🎨 ZUTOMAYO CARD SYSTEM
+   ======================================== */
+
+.hyper .backdrop-blur-md {
+  background: rgba(255, 255, 255, 0.3) !important;
+  backdrop-filter: blur(20px);
+  border: 2px solid rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.hyper .backdrop-blur-md:hover {
+  background: rgba(255, 255, 255, 0.4) !important;
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  border: 2px solid var(--neon-pink) !important;
+  animation: hyper-card-glow 2s ease-in-out infinite;
+}
+
+@keyframes hyper-card-glow {
+  0%, 100% { 
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 0 20px var(--neon-pink);
+  }
+  50% { 
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 0 30px var(--neon-cyan);
+  }
+}
+
+/* ========================================
+   🎵 ZUTOMAYO TEXT SYSTEM
+   ======================================== */
+
+.hyper h1 {
+  background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple), var(--neon-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: hyper-text-shift 3s ease-in-out infinite;
+}
+
+@keyframes hyper-text-shift {
+  0%, 100% { 
+    background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple), var(--neon-cyan));
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+  50% { 
+    background: linear-gradient(135deg, var(--neon-cyan), var(--neon-yellow), var(--neon-pink));
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+}
+
+/* ========================================
+   🎯 ZUTOMAYO BUTTON SYSTEM
+   ======================================== */
+
+.hyper button {
+  background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple)) !important;
+  color: white !important;
+  border: none !important;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.hyper button:hover {
+  background: linear-gradient(135deg, var(--neon-cyan), var(--neon-yellow)) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(255, 20, 147, 0.4);
+}
+
+.hyper button:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.hyper button:hover:before {
+  left: 100%;
+}
+
+/* ========================================
+   ✨ ZUTOMAYO HOVER EFFECTS
+   ======================================== */
+
+.hyper a:hover,
+.hyper span:hover {
+  color: var(--neon-pink) !important;
+  text-shadow: 0 0 10px var(--neon-pink);
+  transition: all 0.3s ease;
+}
+
+.hyper .text-3xl:hover {
+  animation: hyper-bounce 0.6s ease-in-out;
+  filter: drop-shadow(0 0 10px var(--neon-cyan));
+}
+
+@keyframes hyper-bounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2) rotate(10deg); }
+}
+
+/* ========================================
+   🎪 ZUTOMAYO ANIMATIONS
+   ======================================== */
+
+.hyper .animate-pulse {
+  animation: hyper-pulse 2s ease-in-out infinite;
+}
+
+@keyframes hyper-pulse {
+  0%, 100% { 
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+/* ========================================
+   🎨 ZUTOMAYO INPUT SYSTEM
+   ======================================== */
+
+.hyper input[type="text"], 
+.hyper input[type="email"], 
+.hyper textarea {
+  background: rgba(255, 255, 255, 0.6) !important;
+  border: 2px solid var(--pastel-pink) !important;
+  color: #2d3748 !important;
+  transition: all 0.3s ease;
+}
+
+.hyper input[type="text"]:focus, 
+.hyper input[type="email"]:focus, 
+.hyper textarea:focus {
+  border-color: var(--neon-pink) !important;
+  box-shadow: 0 0 20px rgba(255, 20, 147, 0.3) !important;
+  outline: none !important;
+}
+
+/* ========================================
+   🎯 LEGACY COMPATIBILITY & OVERRIDES
+   ======================================== */
+
+/* Input field styles */
+input[type="text"], 
+input[type="email"], 
+textarea {
+  color: rgb(17, 24, 39) !important;
+  background: rgba(255, 255, 255, 0.8) !important;
+  border-color: rgba(187, 247, 208, 0.5) !important;
+}
+
+.dark input[type="text"], 
+.dark input[type="email"], 
+.dark textarea {
+  color: rgb(243, 244, 246) !important;
+  background: rgba(55, 65, 81, 0.8) !important;
+  border-color: rgba(75, 85, 99, 0.5) !important;
+}
+
+.hyper input[type="text"], 
+.hyper input[type="email"], 
+.hyper textarea {
+  background: rgba(255, 255, 255, 0.6) !important;
+  border: 2px solid var(--pastel-pink) !important;
+  color: #2d3748 !important;
+  transition: all 0.3s ease;
+}
+
+.hyper input[type="text"]:focus, 
+.hyper input[type="email"]:focus, 
+.hyper textarea:focus {
+  border-color: var(--neon-pink) !important;
+  box-shadow: 0 0 20px rgba(255, 20, 147, 0.3) !important;
+  outline: none !important;
+}
+
+/* Button styles */
+.dark .bg-pink-400 {
+  background-color: rgb(250, 204, 21) !important;
+}
+
+.dark .bg-pink-400:hover {
+  background-color: rgb(245, 158, 11) !important;
+}
+
+/* Override any conflicting text colors */
+.text-black {
+  color: rgb(17, 24, 39) !important;
+}
+
+.dark .text-black {
+  color: rgb(243, 244, 246) !important;
+}
+
+.hyper .text-black {
+  color: #2d3748 !important;
+}
+
+.text-gray-900 {
+  color: rgb(17, 24, 39) !important;
+}
+
+.dark .text-gray-900 {
+  color: rgb(243, 244, 246) !important;
+}
+
+.hyper .text-gray-900 {
+  color: #2d3748 !important;
+}
+
+.text-gray-500 {
+  color: rgb(107, 114, 128) !important;
+}
+
+.dark .text-gray-500 {
+  color: rgb(156, 163, 175) !important;
+}
+
+.hyper .text-gray-500 {
+  color: #718096 !important;
+}
