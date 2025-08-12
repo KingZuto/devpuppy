@@ -333,10 +333,10 @@ const AWSCharacters = () => {
         transition={{ duration: 0.8 }}
         className="text-center mb-12"
       >
-        <h2 className="text-4xl font-bold mb-4 zutomayo-title">
+        <h2 className="text-4xl font-bold mb-4 hyper-title">
           ☁️ AWS Character Circus
         </h2>
-        <p className="text-lg opacity-80 zutomayo-subtitle">
+        <p className="text-lg opacity-80 hyper-subtitle">
           Meet the cloud services that power DevPuppy! 🎪
         </p>
       </motion.div>
@@ -346,7 +346,7 @@ const AWSCharacters = () => {
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="zutomayo-card p-6 hover:scale-105 transition-transform"
+          className="hyper-card p-6 hover:scale-105 transition-transform"
         >
           <LambdaDancer />
         </motion.div>
@@ -355,7 +355,7 @@ const AWSCharacters = () => {
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="zutomayo-card p-6 hover:scale-105 transition-transform"
+          className="hyper-card p-6 hover:scale-105 transition-transform"
         >
           <S3Carrier />
         </motion.div>
@@ -364,7 +364,7 @@ const AWSCharacters = () => {
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="zutomayo-card p-6 hover:scale-105 transition-transform"
+          className="hyper-card p-6 hover:scale-105 transition-transform"
         >
           <APIGatewayConductor />
         </motion.div>
@@ -373,7 +373,7 @@ const AWSCharacters = () => {
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="zutomayo-card p-6 hover:scale-105 transition-transform"
+          className="hyper-card p-6 hover:scale-105 transition-transform"
         >
           <CloudFrontDelivery />
         </motion.div>
@@ -382,7 +382,7 @@ const AWSCharacters = () => {
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="zutomayo-card p-6 hover:scale-105 transition-transform"
+          className="hyper-card p-6 hover:scale-105 transition-transform"
         >
           <DynamoDBJuggler />
         </motion.div>

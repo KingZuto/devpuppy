@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 
 const THEME_KEY = "theme";
-type Theme = "light" | "dark" | "zutomayo";
+type Theme = "light" | "dark" | "hyper";
 
 export default function ThemeToggle() {
   const [theme, setTheme] = useState<Theme>("light");
@@ -19,13 +19,13 @@ export default function ThemeToggle() {
     if (!isMounted) return;
     
     // 모든 테마 클래스 제거
-    document.documentElement.classList.remove("dark", "zutomayo");
+    document.documentElement.classList.remove("dark", "hyper");
     
     // 선택된 테마 적용
     if (theme === "dark") {
       document.documentElement.classList.add("dark");
-    } else if (theme === "zutomayo") {
-      document.documentElement.classList.add("zutomayo");
+    } else if (theme === "hyper") {
+      document.documentElement.classList.add("hyper");
     }
     
     localStorage.setItem(THEME_KEY, theme);
@@ -35,8 +35,8 @@ export default function ThemeToggle() {
     setTheme((prev) => {
       switch (prev) {
         case "light": return "dark";
-        case "dark": return "zutomayo";
-        case "zutomayo": return "light";
+        case "dark": return "hyper";
+        case "hyper": return "light";
         default: return "light";
       }
     });
@@ -46,7 +46,7 @@ export default function ThemeToggle() {
     switch (theme) {
       case "light": return "☀️";
       case "dark": return "🌙";
-      case "zutomayo": return "🎵";
+      case "hyper": return "🎵";
       default: return "☀️";
     }
   };
@@ -55,7 +55,7 @@ export default function ThemeToggle() {
     switch (theme) {
       case "light": return "Light Mode";
       case "dark": return "Dark Mode";
-      case "zutomayo": return "Zutomayo Mode";
+      case "hyper": return "Hyper Mode";
       default: return "Light Mode";
     }
   };
@@ -66,7 +66,7 @@ export default function ThemeToggle() {
         return "bg-white/80 border-neutral-200 hover:bg-white/90";
       case "dark": 
         return "bg-neutral-900/80 border-neutral-800 hover:bg-neutral-900/90";
-      case "zutomayo": 
+      case "hyper": 
         return "bg-gradient-to-r from-pink-400 via-purple-400 to-cyan-400 border-transparent hover:from-pink-500 hover:via-purple-500 hover:to-cyan-500 shadow-lg";
       default: 
         return "bg-white/80 border-neutral-200";
@@ -79,7 +79,7 @@ export default function ThemeToggle() {
       {isMounted && (
         <div className={`
           px-3 py-1 rounded-full text-xs font-medium transition-all duration-300
-          ${theme === "zutomayo" 
+          ${theme === "hyper" 
             ? "bg-gradient-to-r from-pink-400 to-cyan-400 text-white shadow-lg" 
             : theme === "dark"
               ? "bg-neutral-800/90 text-white border border-neutral-700"
@@ -98,19 +98,19 @@ export default function ThemeToggle() {
           w-14 h-14 rounded-full flex items-center justify-center 
           shadow-lg border transition-all duration-300 hover:scale-105
           ${getButtonStyle()}
-          ${theme === "zutomayo" ? "animate-pulse" : ""}
+          ${theme === "hyper" ? "animate-pulse" : ""}
         `}
       >
         <span className={`
           text-3xl transition-all duration-300
-          ${theme === "zutomayo" ? "animate-bounce" : ""}
+          ${theme === "hyper" ? "animate-bounce" : ""}
         `}>
           {isMounted ? getThemeIcon() : "☀️"}
         </span>
       </button>
       
       {/* Zutomayo 모드일 때 추가 효과 */}
-      {isMounted && theme === "zutomayo" && (
+      {isMounted && theme === "hyper" && (
         <div className="absolute inset-0 rounded-full animate-ping bg-gradient-to-r from-pink-400 to-cyan-400 opacity-20 -z-10"></div>
       )}
     </div>

@@ -112,53 +112,53 @@ aside a:hover {
    🎵 ZUTOMAYO MODE
    ======================================== */
 
-.zutomayo body {
+.hyper body {
   background: var(--gradient-dreamy);
   color: #2d3748;
-  animation: zutomayo-bg-shift 10s ease-in-out infinite;
+  animation: hyper-bg-shift 10s ease-in-out infinite;
 }
 
-.zutomayo .min-h-screen {
+.hyper .min-h-screen {
   background: var(--gradient-dreamy);
-  animation: zutomayo-bg-shift 10s ease-in-out infinite;
+  animation: hyper-bg-shift 10s ease-in-out infinite;
 }
 
 /* Zutomayo mode text colors */
-.zutomayo h1 {
+.hyper h1 {
   background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple), var(--neon-cyan));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: zutomayo-text-shift 3s ease-in-out infinite;
+  animation: hyper-text-shift 3s ease-in-out infinite;
 }
 
-.zutomayo h2, .zutomayo h3, .zutomayo h4, .zutomayo h5, .zutomayo h6 {
+.hyper h2, .hyper h3, .hyper h4, .hyper h5, .hyper h6 {
   color: #2d3748 !important;
   font-weight: bold;
 }
 
-.zutomayo p, .zutomayo span, .zutomayo div {
+.hyper p, .hyper span, .hyper div {
   color: #4a5568 !important;
 }
 
 /* Zutomayo mode sidebar */
-.zutomayo aside {
+.hyper aside {
   background: rgba(255, 255, 255, 0.4) !important;
   backdrop-filter: blur(20px) !important;
   border: 2px solid var(--pastel-pink) !important;
 }
 
-.zutomayo aside span, .zutomayo aside a {
+.hyper aside span, .hyper aside a {
   color: #2d3748 !important;
   font-weight: 600;
 }
 
-.zutomayo aside a:hover {
+.hyper aside a:hover {
   color: var(--neon-pink) !important;
   text-shadow: 0 0 10px var(--neon-pink);
 }
 
-@keyframes zutomayo-bg-shift {
+@keyframes hyper-bg-shift {
   0%, 100% { 
     background: linear-gradient(135deg, var(--pastel-pink), var(--pastel-blue), var(--pastel-mint));
   }
@@ -174,22 +174,22 @@ aside a:hover {
    🎨 ZUTOMAYO CARD SYSTEM
    ======================================== */
 
-.zutomayo .backdrop-blur-md {
+.hyper .backdrop-blur-md {
   background: rgba(255, 255, 255, 0.3) !important;
   backdrop-filter: blur(20px);
   border: 2px solid rgba(255, 255, 255, 0.4) !important;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
-.zutomayo .backdrop-blur-md:hover {
+.hyper .backdrop-blur-md:hover {
   background: rgba(255, 255, 255, 0.4) !important;
   transform: translateY(-5px) scale(1.02);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
   border: 2px solid var(--neon-pink) !important;
-  animation: zutomayo-card-glow 2s ease-in-out infinite;
+  animation: hyper-card-glow 2s ease-in-out infinite;
 }
 
-@keyframes zutomayo-card-glow {
+@keyframes hyper-card-glow {
   0%, 100% { 
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 0 20px var(--neon-pink);
   }
@@ -202,15 +202,15 @@ aside a:hover {
    🎵 ZUTOMAYO TEXT SYSTEM
    ======================================== */
 
-.zutomayo h1 {
+.hyper h1 {
   background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple), var(--neon-cyan));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: zutomayo-text-shift 3s ease-in-out infinite;
+  animation: hyper-text-shift 3s ease-in-out infinite;
 }
 
-@keyframes zutomayo-text-shift {
+@keyframes hyper-text-shift {
   0%, 100% { 
     background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple), var(--neon-cyan));
     -webkit-background-clip: text;
@@ -227,7 +227,7 @@ aside a:hover {
    🎯 ZUTOMAYO BUTTON SYSTEM
    ======================================== */
 
-.zutomayo button {
+.hyper button {
   background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple)) !important;
   color: white !important;
   border: none !important;
@@ -236,13 +236,13 @@ aside a:hover {
   overflow: hidden;
 }
 
-.zutomayo button:hover {
+.hyper button:hover {
   background: linear-gradient(135deg, var(--neon-cyan), var(--neon-yellow)) !important;
   transform: translateY(-2px);
   box-shadow: 0 10px 20px rgba(255, 20, 147, 0.4);
 }
 
-.zutomayo button:before {
+.hyper button:before {
   content: '';
   position: absolute;
   top: 0;
@@ -253,7 +253,7 @@ aside a:hover {
   transition: left 0.5s;
 }
 
-.zutomayo button:hover:before {
+.hyper button:hover:before {
   left: 100%;
 }
 
@@ -261,19 +261,19 @@ aside a:hover {
    ✨ ZUTOMAYO HOVER EFFECTS
    ======================================== */
 
-.zutomayo a:hover,
-.zutomayo span:hover {
+.hyper a:hover,
+.hyper span:hover {
   color: var(--neon-pink) !important;
   text-shadow: 0 0 10px var(--neon-pink);
   transition: all 0.3s ease;
 }
 
-.zutomayo .text-3xl:hover {
-  animation: zutomayo-bounce 0.6s ease-in-out;
+.hyper .text-3xl:hover {
+  animation: hyper-bounce 0.6s ease-in-out;
   filter: drop-shadow(0 0 10px var(--neon-cyan));
 }
 
-@keyframes zutomayo-bounce {
+@keyframes hyper-bounce {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.2) rotate(10deg); }
 }
@@ -282,11 +282,11 @@ aside a:hover {
    🎪 ZUTOMAYO ANIMATIONS
    ======================================== */
 
-.zutomayo .animate-pulse {
-  animation: zutomayo-pulse 2s ease-in-out infinite;
+.hyper .animate-pulse {
+  animation: hyper-pulse 2s ease-in-out infinite;
 }
 
-@keyframes zutomayo-pulse {
+@keyframes hyper-pulse {
   0%, 100% { 
     opacity: 1;
     transform: scale(1);
@@ -301,18 +301,18 @@ aside a:hover {
    🎨 ZUTOMAYO INPUT SYSTEM
    ======================================== */
 
-.zutomayo input[type="text"], 
-.zutomayo input[type="email"], 
-.zutomayo textarea {
+.hyper input[type="text"], 
+.hyper input[type="email"], 
+.hyper textarea {
   background: rgba(255, 255, 255, 0.6) !important;
   border: 2px solid var(--pastel-pink) !important;
   color: #2d3748 !important;
   transition: all 0.3s ease;
 }
 
-.zutomayo input[type="text"]:focus, 
-.zutomayo input[type="email"]:focus, 
-.zutomayo textarea:focus {
+.hyper input[type="text"]:focus, 
+.hyper input[type="email"]:focus, 
+.hyper textarea:focus {
   border-color: var(--neon-pink) !important;
   box-shadow: 0 0 20px rgba(255, 20, 147, 0.3) !important;
   outline: none !important;
@@ -339,18 +339,18 @@ textarea {
   border-color: rgba(75, 85, 99, 0.5) !important;
 }
 
-.zutomayo input[type="text"], 
-.zutomayo input[type="email"], 
-.zutomayo textarea {
+.hyper input[type="text"], 
+.hyper input[type="email"], 
+.hyper textarea {
   background: rgba(255, 255, 255, 0.6) !important;
   border: 2px solid var(--pastel-pink) !important;
   color: #2d3748 !important;
   transition: all 0.3s ease;
 }
 
-.zutomayo input[type="text"]:focus, 
-.zutomayo input[type="email"]:focus, 
-.zutomayo textarea:focus {
+.hyper input[type="text"]:focus, 
+.hyper input[type="email"]:focus, 
+.hyper textarea:focus {
   border-color: var(--neon-pink) !important;
   box-shadow: 0 0 20px rgba(255, 20, 147, 0.3) !important;
   outline: none !important;
@@ -374,7 +374,7 @@ textarea {
   color: rgb(243, 244, 246) !important;
 }
 
-.zutomayo .text-black {
+.hyper .text-black {
   color: #2d3748 !important;
 }
 
@@ -386,7 +386,7 @@ textarea {
   color: rgb(243, 244, 246) !important;
 }
 
-.zutomayo .text-gray-900 {
+.hyper .text-gray-900 {
   color: #2d3748 !important;
 }
 
@@ -398,6 +398,6 @@ textarea {
   color: rgb(156, 163, 175) !important;
 }
 
-.zutomayo .text-gray-500 {
+.hyper .text-gray-500 {
   color: #718096 !important;
 }
