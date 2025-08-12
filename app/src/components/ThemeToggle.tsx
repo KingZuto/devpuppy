@@ -80,8 +80,10 @@ export default function ThemeToggle() {
         <div className={`
           px-3 py-1 rounded-full text-xs font-medium transition-all duration-300
           ${theme === "zutomayo" 
-            ? "bg-gradient-to-r from-pink-400 to-cyan-400 text-white" 
-            : "bg-white/80 dark:bg-neutral-900/80 text-neutral-700 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-800"
+            ? "bg-gradient-to-r from-pink-400 to-cyan-400 text-white shadow-lg" 
+            : theme === "dark"
+              ? "bg-neutral-800/90 text-white border border-neutral-700"
+              : "bg-white/90 text-neutral-800 border border-neutral-200"
           }
         `}>
           {getThemeLabel()}
