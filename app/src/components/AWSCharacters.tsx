@@ -350,10 +350,7 @@ const AWSCharacters = () => {
     return () => observer.disconnect();
   }, []);
 
-  // Zutomayo 모드에서는 정적 섹션 숨기기 (떠다니는 캐릭터가 있으니까!)
-  if (theme === 'zutomayo') {
-    return null;
-  }
+  // 모든 테마에서 AWS 캐릭터 섹션 표시
   return (
     <div className="w-full py-16 px-4">
       <motion.div

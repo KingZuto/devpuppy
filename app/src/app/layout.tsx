@@ -4,7 +4,6 @@ import "./globals.css";
 import Sidebar from "../components/Sidebar";
 import PageTransition from "../components/PageTransition";
 import ThemeToggle from "../components/ThemeToggle";
-import FloatingAWSCharacters from "../components/FloatingAWSCharacters";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -50,10 +49,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-gradient-to-br from-pink-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 text-gray-900 dark:text-gray-100 relative transition-colors duration-300`}
         suppressHydrationWarning={true}
       >
-        {/* 떠다니는 AWS 캐릭터들 */}
-        <FloatingAWSCharacters />
-        
-        <div className="flex min-h-screen">
+        <div className="flex min-h-screen relative z-10">
           <Sidebar />
           <PageTransition>{children}</PageTransition>
         </div>
