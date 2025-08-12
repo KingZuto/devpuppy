@@ -1,3 +1,15 @@
+# 공통 태그 및 네이밍 규칙
+locals {
+  common_prefix = "${var.app_name}-${local.environment}-"
+  common_tags = {
+    Environment = local.environment
+    Project     = var.app_name
+    ManagedBy   = "Terraform"
+    Repository  = "${var.github_owner}/${var.github_repo}"
+    Branch      = var.github_branch
+  }
+}
+
 variable "aws_region" {
   description = "AWS region"
   type        = string

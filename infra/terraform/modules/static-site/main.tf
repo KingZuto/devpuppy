@@ -13,10 +13,12 @@ resource "aws_s3_bucket" "website" {
   bucket        = "${var.app_name}-${var.environment}-website-${random_id.bucket_suffix.hex}"
   force_destroy = true  # 개발 환경에서 쉬운 삭제를 위해
 
-  tags = {
-    Name        = "${var.app_name}-${var.environment}-website-${random_id.bucket_suffix.hex}"
-    Environment = var.environment
-  }
+  tags = merge(
+    var.common_tags,
+    {
+      Name = "${var.common_prefix}website-${random_id.bucket_suffix.hex}"
+    }
+  )
 }
 
 # S3 Bucket public access configuration
@@ -123,10 +125,12 @@ resource "aws_cloudfront_distribution" "website" {
     cloudfront_default_certificate = true
   }
 
-  tags = {
-    Name        = "${var.app_name}-${var.environment}-cloudfront-${random_id.bucket_suffix.hex}"
-    Environment = var.environment
-  }
+  tags = merge(
+    var.common_tags,
+    {
+      Name = "${var.common_prefix}cloudfront-${random_id.bucket_suffix.hex}"
+    }
+  )
 }
 
 # Update S3 bucket policy to allow CloudFront OAC

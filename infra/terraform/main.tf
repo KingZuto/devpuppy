@@ -2,6 +2,7 @@
 # 완전한 DevOps 환경 구축! 🚀
 # IAM 역할 삭제 완료 - 재시도!
 # 동적 이름 생성 적용 - 2025.08.08
+# 태그 시스템 추가 - 2025.08.12
 
 # 브랜치에 따른 환경 결정
 locals {
@@ -14,8 +15,10 @@ locals {
 module "static_site" {
   source = "./modules/static-site"
 
-  app_name    = var.app_name
-  environment = local.environment
+  app_name      = var.app_name
+  environment   = local.environment
+  common_prefix = local.common_prefix
+  common_tags   = local.common_tags
 }
 
 # CI/CD Pipeline with CodeBuild and CodePipeline
@@ -34,16 +37,20 @@ module "cicd" {
   github_token              = var.github_token
   from_email                = var.from_email
   to_email                  = var.to_email
+  common_prefix             = local.common_prefix
+  common_tags               = local.common_tags
 }
 
 # API Gateway + Lambda for Contact Form
 module "api" {
   source = "./modules/api"
 
-  app_name    = var.app_name
-  environment = local.environment
-  aws_region  = var.aws_region
-  from_email  = var.from_email
-  to_email    = var.to_email
+  app_name      = var.app_name
+  environment   = local.environment
+  aws_region    = var.aws_region
+  from_email    = var.from_email
+  to_email      = var.to_email
+  common_prefix = local.common_prefix
+  common_tags   = local.common_tags
 }
 
