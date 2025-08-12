@@ -7,8 +7,8 @@ const projects = [
     date: "June, 2024",
   },
   {
-    name: "fastpick",
-    date: "May, 2024",
+    name: "mapzip",
+    date: "August, 2024",
   },
 ];
 
