@@ -4,11 +4,11 @@ import React, { useEffect, useState } from "react";
 const projects = [
   {
     name: "Surbee",
-    date: "June, 2024",
+    date: "May, 2025",
   },
   {
     name: "mapzip",
-    date: "August, 2024",
+    date: "August, 2025",
   },
 ];
 
