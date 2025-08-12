@@ -44,7 +44,7 @@ export default function ContactPage() {
       const apiUrl = 'https://yquxen9m2g.execute-api.ap-northeast-2.amazonaws.com/dev';
       console.log('Using API URL:', apiUrl);
       
-      const response = await fetch(`${apiUrl}/contact`, {
+      const response = await fetch(`${apiUrl}/send-email`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
