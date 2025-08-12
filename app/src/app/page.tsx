@@ -72,7 +72,7 @@ export default function Home() {
             🚀 Powered by Next.js + AWS + Terraform
           </p>
           <p className="text-gray-400 dark:text-gray-500 text-xs mt-2">
-            🎵 Try Zutomayo mode for floating AWS characters!
+            🎵 Try Hyper mode for floating AWS characters!
           </p>
         </div>
       </div>
