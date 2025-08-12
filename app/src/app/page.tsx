@@ -71,9 +71,6 @@ export default function Home() {
           <p className="text-gray-500 dark:text-gray-400 text-sm">
             🚀 Powered by Next.js + AWS + Terraform
           </p>
-          <p className="text-gray-400 dark:text-gray-500 text-xs mt-2">
-            🎵 Try Hyper mode for floating AWS characters!
-          </p>
         </div>
       </div>
 
