@@ -20,16 +20,29 @@ phases:
       - cd $CODEBUILD_SRC_DIR/app && node --version && npm --version
       - echo "Checking package.json:"
       - cd $CODEBUILD_SRC_DIR/app && cat package.json
-      - echo "Getting API Gateway URL from AWS..."
+      - echo "Getting API Gateway URL from Parameter Store..."
       - |
-        API_ID=$(aws apigateway get-rest-apis --region ap-northeast-2 --query "items[?contains(name, 'devpuppy-dev-contact-api')].id" --output text)
-        echo "Found API Gateway ID: $API_ID"
-        if [ ! -z "$API_ID" ] && [ "$API_ID" != "None" ]; then 
-          export NEXT_PUBLIC_API_GATEWAY_URL="https://$API_ID.execute-api.ap-northeast-2.amazonaws.com/dev"
-          echo "Set NEXT_PUBLIC_API_GATEWAY_URL=$NEXT_PUBLIC_API_GATEWAY_URL"
+        # Try to get API Gateway URL from Parameter Store
+        CONTACT_API_ENDPOINT=$(aws ssm get-parameter --name "/devpuppy/dev/contact-api-endpoint" --region ap-northeast-2 --query "Parameter.Value" --output text 2>/dev/null || echo "")
+        
+        if [ ! -z "$CONTACT_API_ENDPOINT" ] && [ "$CONTACT_API_ENDPOINT" != "None" ]; then 
+          export NEXT_PUBLIC_CONTACT_API_ENDPOINT="$CONTACT_API_ENDPOINT"
+          echo "✅ Got API endpoint from Parameter Store: $NEXT_PUBLIC_CONTACT_API_ENDPOINT"
         else 
-          echo "Warning: Could not find API Gateway, using fallback"
+          echo "⚠️  Parameter Store not available, trying API Gateway discovery..."
+          API_ID=$(aws apigateway get-rest-apis --region ap-northeast-2 --query "items[?contains(name, 'devpuppy-dev-contact-api')].id" --output text)
+          echo "Found API Gateway ID: $API_ID"
+          if [ ! -z "$API_ID" ] && [ "$API_ID" != "None" ]; then 
+            export NEXT_PUBLIC_CONTACT_API_ENDPOINT="https://$API_ID.execute-api.ap-northeast-2.amazonaws.com/dev/send-email"
+            echo "✅ Set fallback API endpoint: $NEXT_PUBLIC_CONTACT_API_ENDPOINT"
+          else 
+            echo "❌ Could not determine API Gateway URL"
+            exit 1
+          fi
         fi
+      - echo "Creating .env.production file..."
+      - cd $CODEBUILD_SRC_DIR/app && echo "NEXT_PUBLIC_CONTACT_API_ENDPOINT=$NEXT_PUBLIC_CONTACT_API_ENDPOINT" > .env.production
+      - echo "Environment file contents:" && cat .env.production
   build:
     commands:
       - echo "Build phase started on `date`"

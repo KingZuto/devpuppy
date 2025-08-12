@@ -237,3 +237,29 @@ resource "aws_api_gateway_integration_response" "send_email_options_integration_
     "method.response.header.Access-Control-Allow-Origin"  = "'*'"
   }
 }
+
+# Store API Gateway URL in Parameter Store for dynamic configuration
+resource "aws_ssm_parameter" "api_gateway_url" {
+  name        = "/${var.app_name}/${var.environment}/api-gateway-url"
+  description = "API Gateway endpoint URL for contact form"
+  type        = "String"
+  value       = "https://${aws_api_gateway_rest_api.contact_api.id}.execute-api.${var.aws_region}.amazonaws.com/${var.environment}"
+
+  tags = {
+    Name        = "${var.app_name}-${var.environment}-api-url-param"
+    Environment = var.environment
+  }
+}
+
+# Store complete contact API endpoint
+resource "aws_ssm_parameter" "contact_api_endpoint" {
+  name        = "/${var.app_name}/${var.environment}/contact-api-endpoint"
+  description = "Complete contact form API endpoint URL"
+  type        = "String"
+  value       = "https://${aws_api_gateway_rest_api.contact_api.id}.execute-api.${var.aws_region}.amazonaws.com/${var.environment}/send-email"
+
+  tags = {
+    Name        = "${var.app_name}-${var.environment}-contact-endpoint-param"
+    Environment = var.environment
+  }
+}
