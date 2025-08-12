@@ -3,60 +3,68 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ========================================
+   🎵 ZUTOMAYO COLOR SYSTEM
+   ======================================== */
+
 :root {
+  /* 🎨 Pastel Base Colors */
+  --pastel-pink: #FFB3D9;
+  --pastel-blue: #B3D9FF;  
+  --pastel-mint: #B3FFD9;
+  --pastel-purple: #D9B3FF;
+  --pastel-yellow: #FFEBB3;
+  --pastel-coral: #FFB3B3;
+  
+  /* ✨ Neon Accent Colors */
+  --neon-pink: #FF1493;
+  --neon-cyan: #00FFFF;
+  --neon-yellow: #FFFF00;
+  --neon-purple: #9D4EDD;
+  --neon-orange: #FF6B35;
+  --neon-green: #06FFA5;
+  
+  /* 🌈 Gradient Combinations */
+  --gradient-dreamy: linear-gradient(135deg, var(--pastel-pink), var(--pastel-blue), var(--pastel-mint));
+  --gradient-neon: linear-gradient(135deg, var(--neon-pink), var(--neon-purple), var(--neon-cyan));
+  --gradient-sunset: linear-gradient(135deg, var(--pastel-coral), var(--pastel-yellow), var(--pastel-pink));
+  
+  /* 🎯 Default Theme Variables */
   --background: #ffffff;
   --foreground: #171717;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ========================================
+   🌞 LIGHT MODE
+   ======================================== */
+
+body {
+  background: linear-gradient(to bottom right, rgb(254, 242, 242), rgb(239, 246, 255), rgb(240, 253, 244));
+  color: rgb(17, 24, 39);
+  transition: all 0.3s ease;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.min-h-screen {
+  background: linear-gradient(to bottom right, rgb(254, 242, 242), rgb(239, 246, 255), rgb(240, 253, 244));
+  transition: background 0.3s ease;
 }
 
-/* 수동 다크모드 스타일 추가 */
-.dark body {
-  background: linear-gradient(to bottom right, rgb(17, 24, 39), rgb(31, 41, 55), rgb(17, 24, 39)) !important;
-  color: rgb(243, 244, 246) !important;
-}
-
-/* 사이드바 스타일 */
-/* 사이드바 강제 스타일 */
-aside {
-  border-color: rgba(251, 207, 232, 0.3) !important; /* 연한 핑크 */
-}
-
-.dark aside {
-  background: linear-gradient(to bottom, rgb(23, 23, 23), rgb(31, 31, 31)) !important;
-  border-color: rgb(38, 38, 38) !important;
-}
-
-.dark aside span {
-  color: white !important;
-}
-
-.dark aside a {
-  color: rgb(243, 244, 246) !important;
-}
-
-.dark aside a:hover {
-  color: rgb(250, 204, 21) !important;
-}
-
-/* 라이트 모드에서 사이드바 텍스트 더 진하게 */
-aside span {
+/* Light mode text colors */
+h1, h2, h3, h4, h5, h6 {
   color: rgb(17, 24, 39) !important;
 }
 
-aside a {
+p, span, div {
+  color: rgb(55, 65, 81) !important;
+}
+
+/* Light mode sidebar */
+aside {
+  background: rgba(255, 255, 255, 0.8) !important;
+  border-color: rgba(251, 207, 232, 0.3) !important;
+}
+
+aside span, aside a {
   color: rgb(17, 24, 39) !important;
 }
 
@@ -64,92 +72,291 @@ aside a:hover {
   color: rgb(219, 39, 119) !important;
 }
 
-/* 배경 강제 스타일 - 각 페이지별로 명시적 적용 */
+/* ========================================
+   🌙 DARK MODE
+   ======================================== */
+
+.dark body {
+  background: linear-gradient(to bottom right, rgb(17, 24, 39), rgb(31, 41, 55), rgb(17, 24, 39));
+  color: rgb(243, 244, 246);
+}
+
 .dark .min-h-screen {
-  background: linear-gradient(to bottom right, rgb(31, 41, 55), rgb(55, 65, 81), rgb(31, 41, 55)) !important;
+  background: linear-gradient(to bottom right, rgb(31, 41, 55), rgb(55, 65, 81), rgb(31, 41, 55));
 }
 
-/* 라이트 모드 배경 강제 적용 */
-.min-h-screen {
-  background: linear-gradient(to bottom right, rgb(254, 242, 242), rgb(239, 246, 255), rgb(240, 253, 244)) !important;
+/* Dark mode text colors */
+.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+  color: rgb(243, 244, 246) !important;
 }
 
-.dark h1 {
-  color: white !important;
-}
-
-/* 홈페이지 제목과 설명만 예외 처리 */
-.dark .text-black {
-  color: white !important;
-}
-
-.dark .text-gray-900 {
+.dark p, .dark span, .dark div {
   color: rgb(229, 231, 235) !important;
 }
 
-/* 라이트 모드에서 홈페이지 텍스트 강제 적용 */
-.text-black {
-  color: black !important;
+/* Dark mode sidebar */
+.dark aside {
+  background: linear-gradient(to bottom, rgb(23, 23, 23), rgb(31, 31, 31)) !important;
+  border-color: rgb(38, 38, 38) !important;
 }
 
-.text-gray-900 {
+.dark aside span, .dark aside a {
+  color: rgb(243, 244, 246) !important;
+}
+
+.dark aside a:hover {
+  color: rgb(250, 204, 21) !important;
+}
+
+/* ========================================
+   🎵 ZUTOMAYO MODE
+   ======================================== */
+
+.zutomayo body {
+  background: var(--gradient-dreamy);
+  color: #2d3748;
+  animation: zutomayo-bg-shift 10s ease-in-out infinite;
+}
+
+.zutomayo .min-h-screen {
+  background: var(--gradient-dreamy);
+  animation: zutomayo-bg-shift 10s ease-in-out infinite;
+}
+
+/* Zutomayo mode text colors */
+.zutomayo h1 {
+  background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple), var(--neon-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: zutomayo-text-shift 3s ease-in-out infinite;
+}
+
+.zutomayo h2, .zutomayo h3, .zutomayo h4, .zutomayo h5, .zutomayo h6 {
+  color: #2d3748 !important;
+  font-weight: bold;
+}
+
+.zutomayo p, .zutomayo span, .zutomayo div {
+  color: #4a5568 !important;
+}
+
+/* Zutomayo mode sidebar */
+.zutomayo aside {
+  background: rgba(255, 255, 255, 0.4) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 2px solid var(--pastel-pink) !important;
+}
+
+.zutomayo aside span, .zutomayo aside a {
+  color: #2d3748 !important;
+  font-weight: 600;
+}
+
+.zutomayo aside a:hover {
+  color: var(--neon-pink) !important;
+  text-shadow: 0 0 10px var(--neon-pink);
+}
+
+@keyframes zutomayo-bg-shift {
+  0%, 100% { 
+    background: linear-gradient(135deg, var(--pastel-pink), var(--pastel-blue), var(--pastel-mint));
+  }
+  33% { 
+    background: linear-gradient(135deg, var(--pastel-blue), var(--pastel-mint), var(--pastel-purple));
+  }
+  66% { 
+    background: linear-gradient(135deg, var(--pastel-mint), var(--pastel-purple), var(--pastel-pink));
+  }
+}
+
+/* ========================================
+   🎨 ZUTOMAYO CARD SYSTEM
+   ======================================== */
+
+.zutomayo .backdrop-blur-md {
+  background: rgba(255, 255, 255, 0.3) !important;
+  backdrop-filter: blur(20px);
+  border: 2px solid rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.zutomayo .backdrop-blur-md:hover {
+  background: rgba(255, 255, 255, 0.4) !important;
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  border: 2px solid var(--neon-pink) !important;
+  animation: zutomayo-card-glow 2s ease-in-out infinite;
+}
+
+@keyframes zutomayo-card-glow {
+  0%, 100% { 
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 0 20px var(--neon-pink);
+  }
+  50% { 
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 0 30px var(--neon-cyan);
+  }
+}
+
+/* ========================================
+   🎵 ZUTOMAYO TEXT SYSTEM
+   ======================================== */
+
+.zutomayo h1 {
+  background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple), var(--neon-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: zutomayo-text-shift 3s ease-in-out infinite;
+}
+
+@keyframes zutomayo-text-shift {
+  0%, 100% { 
+    background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple), var(--neon-cyan));
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+  50% { 
+    background: linear-gradient(135deg, var(--neon-cyan), var(--neon-yellow), var(--neon-pink));
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+}
+
+/* ========================================
+   🎯 ZUTOMAYO BUTTON SYSTEM
+   ======================================== */
+
+.zutomayo button {
+  background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple)) !important;
+  color: white !important;
+  border: none !important;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.zutomayo button:hover {
+  background: linear-gradient(135deg, var(--neon-cyan), var(--neon-yellow)) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(255, 20, 147, 0.4);
+}
+
+.zutomayo button:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.zutomayo button:hover:before {
+  left: 100%;
+}
+
+/* ========================================
+   ✨ ZUTOMAYO HOVER EFFECTS
+   ======================================== */
+
+.zutomayo a:hover,
+.zutomayo span:hover {
+  color: var(--neon-pink) !important;
+  text-shadow: 0 0 10px var(--neon-pink);
+  transition: all 0.3s ease;
+}
+
+.zutomayo .text-3xl:hover {
+  animation: zutomayo-bounce 0.6s ease-in-out;
+  filter: drop-shadow(0 0 10px var(--neon-cyan));
+}
+
+@keyframes zutomayo-bounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2) rotate(10deg); }
+}
+
+/* ========================================
+   🎪 ZUTOMAYO ANIMATIONS
+   ======================================== */
+
+.zutomayo .animate-pulse {
+  animation: zutomayo-pulse 2s ease-in-out infinite;
+}
+
+@keyframes zutomayo-pulse {
+  0%, 100% { 
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+/* ========================================
+   🎨 ZUTOMAYO INPUT SYSTEM
+   ======================================== */
+
+.zutomayo input[type="text"], 
+.zutomayo input[type="email"], 
+.zutomayo textarea {
+  background: rgba(255, 255, 255, 0.6) !important;
+  border: 2px solid var(--pastel-pink) !important;
+  color: #2d3748 !important;
+  transition: all 0.3s ease;
+}
+
+.zutomayo input[type="text"]:focus, 
+.zutomayo input[type="email"]:focus, 
+.zutomayo textarea:focus {
+  border-color: var(--neon-pink) !important;
+  box-shadow: 0 0 20px rgba(255, 20, 147, 0.3) !important;
+  outline: none !important;
+}
+
+/* ========================================
+   🎯 LEGACY COMPATIBILITY & OVERRIDES
+   ======================================== */
+
+/* Input field styles */
+input[type="text"], 
+input[type="email"], 
+textarea {
   color: rgb(17, 24, 39) !important;
+  background: rgba(255, 255, 255, 0.8) !important;
+  border-color: rgba(187, 247, 208, 0.5) !important;
 }
 
-.dark .text-gray-500 {
-  color: rgb(156, 163, 175) !important;
+.dark input[type="text"], 
+.dark input[type="email"], 
+.dark textarea {
+  color: rgb(243, 244, 246) !important;
+  background: rgba(55, 65, 81, 0.8) !important;
+  border-color: rgba(75, 85, 99, 0.5) !important;
 }
 
-/* 컨택트 페이지 입력 필드 강제 스타일 */
-input[type="text"], input[type="email"], textarea {
-  color: black !important;
+.zutomayo input[type="text"], 
+.zutomayo input[type="email"], 
+.zutomayo textarea {
+  background: rgba(255, 255, 255, 0.6) !important;
+  border: 2px solid var(--pastel-pink) !important;
+  color: #2d3748 !important;
+  transition: all 0.3s ease;
 }
 
-.dark input[type="text"], .dark input[type="email"], .dark textarea {
-  color: white !important;
+.zutomayo input[type="text"]:focus, 
+.zutomayo input[type="email"]:focus, 
+.zutomayo textarea:focus {
+  border-color: var(--neon-pink) !important;
+  box-shadow: 0 0 20px rgba(255, 20, 147, 0.3) !important;
+  outline: none !important;
 }
 
-/* 컨택트 페이지 전용 다크모드 스타일 */
-.dark .bg-white\/50 {
-  background-color: rgba(31, 41, 55, 0.5) !important;
-}
-
-.dark .bg-white\/20 {
-  background-color: rgba(31, 41, 55, 0.2) !important;
-}
-
-.dark .bg-white\/80 {
-  background-color: rgba(55, 65, 81, 0.8) !important;
-}
-
-/* 파스텔 톤 박스들의 강제 스타일 */
-/* 프로젝트 페이지 - 핑크 톤 */
-.dark .bg-pink-50\/80 {
-  background-color: rgba(31, 41, 55, 0.6) !important;
-}
-
-/* 인포 페이지 - 블루 톤 */
-.dark .bg-blue-50\/80 {
-  background-color: rgba(31, 41, 55, 0.5) !important;
-}
-
-/* 컨택트 페이지 - 그린 톤 */
-.dark .bg-green-50\/80 {
-  background-color: rgba(31, 41, 55, 0.5) !important;
-}
-
-.dark .bg-green-50\/90 {
-  background-color: rgba(55, 65, 81, 0.8) !important;
-}
-
-.dark .text-gray-900 {
-  color: white !important;
-}
-
-.dark .border-white\/10 {
-  border-color: rgba(75, 85, 99, 0.3) !important;
-}
-
+/* Button styles */
 .dark .bg-pink-400 {
   background-color: rgb(250, 204, 21) !important;
 }
@@ -158,6 +365,39 @@ input[type="text"], input[type="email"], textarea {
   background-color: rgb(245, 158, 11) !important;
 }
 
-.dark .text-white {
+/* Override any conflicting text colors */
+.text-black {
   color: rgb(17, 24, 39) !important;
+}
+
+.dark .text-black {
+  color: rgb(243, 244, 246) !important;
+}
+
+.zutomayo .text-black {
+  color: #2d3748 !important;
+}
+
+.text-gray-900 {
+  color: rgb(17, 24, 39) !important;
+}
+
+.dark .text-gray-900 {
+  color: rgb(243, 244, 246) !important;
+}
+
+.zutomayo .text-gray-900 {
+  color: #2d3748 !important;
+}
+
+.text-gray-500 {
+  color: rgb(107, 114, 128) !important;
+}
+
+.dark .text-gray-500 {
+  color: rgb(156, 163, 175) !important;
+}
+
+.zutomayo .text-gray-500 {
+  color: #718096 !important;
 }
