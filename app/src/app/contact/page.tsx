@@ -40,18 +40,11 @@ export default function ContactPage() {
     try {
       console.log('Sending request to API Gateway...');
       
-      // 빌드 시 주입된 환경 변수 사용, 없으면 현재 배포된 URL 사용
-      let apiUrl = process.env.NEXT_PUBLIC_API_GATEWAY_URL;
+      // 현재 배포된 올바른 API Gateway URL 사용
+      const apiUrl = 'https://yquxen9m2g.execute-api.ap-northeast-2.amazonaws.com/dev';
+      console.log('Using API URL:', apiUrl);
       
-      if (!apiUrl) {
-        // 환경 변수가 없으면 현재 배포된 API Gateway URL 사용
-        apiUrl = 'https://8nvu3xobn1.execute-api.ap-northeast-2.amazonaws.com/dev';
-        console.log('Using fallback API URL:', apiUrl);
-      } else {
-        console.log('Using environment API URL:', apiUrl);
-      }
-      
-      const response = await fetch(`${apiUrl}/send-email`, {
+      const response = await fetch(`${apiUrl}/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
