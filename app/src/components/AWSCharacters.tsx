@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { 
   SiAwslambda, 
@@ -324,32 +324,6 @@ const DynamoDBJuggler = () => {
 
 // 메인 AWS 캐릭터 컴포넌트
 const AWSCharacters = () => {
-  const [theme, setTheme] = useState<string>("");
-
-  // 현재 테마 감지
-  useEffect(() => {
-    const updateTheme = () => {
-      if (document.documentElement.classList.contains('zutomayo')) {
-        setTheme('zutomayo');
-      } else if (document.documentElement.classList.contains('dark')) {
-        setTheme('dark');
-      } else {
-        setTheme('light');
-      }
-    };
-
-    updateTheme();
-    
-    // 테마 변경 감지를 위한 MutationObserver
-    const observer = new MutationObserver(updateTheme);
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['class']
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
   // 모든 테마에서 AWS 캐릭터 섹션 표시
   return (
     <div className="w-full py-16 px-4">
