@@ -9,14 +9,21 @@ import {
 } from "react-icons/si";
 import { FaCloud } from "react-icons/fa";
 
+interface FloatingCharacterProps {
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  color: string;
+  name: string;
+  speed?: number;
+  size?: number;
+}
+
 // 개별 떠다니는 캐릭터 컴포넌트
-const FloatingCharacter = ({ 
+const FloatingCharacter: React.FC<FloatingCharacterProps> = ({ 
   icon: Icon, 
   color, 
   name, 
   speed = 1, 
-  size = 60,
-  pattern = "bounce" 
+  size = 60
 }) => {
   const [position, setPosition] = useState({ 
     x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth - 100 : 800), 
@@ -27,7 +34,7 @@ const FloatingCharacter = ({
     y: (Math.random() - 0.5) * speed * 2 
   });
   const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
-  const animationRef = useRef();
+  const animationRef = useRef<number | undefined>(undefined);
 
   // 윈도우 크기 감지
   useEffect(() => {

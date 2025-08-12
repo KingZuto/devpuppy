@@ -1,6 +1,7 @@
 "use client";
 import Link from 'next/link';
 import AWSCharacters from '@/components/AWSCharacters';
+import CodeToMusic from '@/components/CodeToMusic';
 
 export default function Home() {
   return (
@@ -14,6 +15,33 @@ export default function Home() {
           <p className="text-xl text-gray-900 dark:text-gray-300 mb-12">
             Welcome to my portfolio website
           </p>
+          
+          {/* AWS DevOps 코드 애니메이션 섹션 */}
+          <div className="mb-12 p-8 bg-white/20 dark:bg-gray-800/20 backdrop-blur-md rounded-2xl border border-white/30">
+            <h3 className="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-200">
+              ⚡ DevOps in Action
+            </h3>
+            <div className="space-y-6">
+              <CodeToMusic 
+                code="terraform apply -auto-approve" 
+                typingSpeed={120}
+                transformDelay={1500}
+                className="block"
+              />
+              <CodeToMusic 
+                code="aws s3 sync ./build s3://devpuppy" 
+                typingSpeed={100}
+                transformDelay={2000}
+                className="block"
+              />
+              <CodeToMusic 
+                code="🚀 CodePipeline: Build Successful" 
+                typingSpeed={150}
+                transformDelay={1800}
+                className="block"
+              />
+            </div>
+          </div>
           
           <div className="flex gap-6 justify-center flex-wrap">
             <Link 
