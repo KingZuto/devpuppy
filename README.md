@@ -3,7 +3,7 @@
 **DevPuppy** is a modern personal portfolio website built with AWS cloud infrastructure.  
 A scalable web application featuring complete DevOps pipeline and Infrastructure as Code (IaC) implementation.
 
-🌐 **Live Demo**: [https://d33znegj5a6lkp.cloudfront.net](https://d33znegj5a6lkp.cloudfront.net)
+🌐 **Live Demo**: [https://tinyurl.com/devpuppy](https://tinyurl.com/devpuppy)
 
 ---
 
@@ -155,7 +155,7 @@ terraform apply
 - **Purpose**: Testing new features and bug fixes
 
 ### Production Environment
-- **URL**: [https://d33znegj5a6lkp.cloudfront.net](https://d33znegj5a6lkp.cloudfront.net)
+- **URL**: [https://tinyurl.com/devpuppy](https://tinyurl.com/devpuppy)
 - **Branch**: `main`
 - **Auto Deploy**: ✅ Automatic deployment on main branch push
 - **Purpose**: Live production website
@@ -244,7 +244,7 @@ This project is distributed under the MIT License. See `LICENSE` file for more i
 ## 📞 Contact
 
 **Project Link**: [https://github.com/KingZuto/devpuppy](https://github.com/KingZuto/devpuppy)  
-**Live Website**: [https://d33znegj5a6lkp.cloudfront.net](https://d33znegj5a6lkp.cloudfront.net)
+**Live Website**: [https://tinyurl.com/devpuppy](https://tinyurl.com/devpuppy)
 
 ---
 
